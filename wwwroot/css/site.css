@@ -1,4 +1,14 @@
-html {
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400&family=Pirata+One&family=VT323&display=swap');
+
+:root {
+    --bs-couenne: #ffe5dd;
+    --bs-rillettes: #ffc7bf;
+    --bs-terrine: #74463f;
+    --bs-pistache: #dde2c8;
+    --bs-cacahuete: #d06a4e;
+}
+
+    html {
   font-size: 14px;
 }
 
@@ -17,6 +27,15 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+p {
+  font-family: 'Chakra Petch';
+}
+
+h1 {
+    font-family: 'Pirata One';
+    color: var(--bs-terrine);
+}
+
+h3 {
+    font-family: 'VT323';
 }
