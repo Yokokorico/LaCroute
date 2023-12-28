@@ -47,3 +47,13 @@ button.accept-policy {
   line-height: 60px;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
