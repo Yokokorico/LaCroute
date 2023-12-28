@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400&family=Pirata+One&family=VT323&display=swap');
 
 :root {
-    --bs-couenne: #ffe5dd;
-    --bs-rillettes: #ffc7bf;
-    --bs-terrine: #74463f;
-    --bs-pistache: #dde2c8;
-    --bs-cacahuete: #d06a4e;
+    --couenne: #ffe5dd;
+    --rillettes: #ffc7bf;
+    --terrine: #74463f;
+    --pistache: #dde2c8;
+    --cacahuete: #d06a4e;
 }
 
     html {
@@ -33,7 +33,6 @@ p {
 
 h1 {
     font-family: 'Pirata One';
-    color: var(--bs-terrine);
 }
 
 h3 {
