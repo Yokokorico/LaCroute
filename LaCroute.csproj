@@ -6,4 +6,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Shared\_Header.razor" />
+    <Content Remove="Views\Shared\_Header.razor.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_Header.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\_Header.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\_Header.razor" />
+  </ItemGroup>
+
 </Project>

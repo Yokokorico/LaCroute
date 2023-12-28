@@ -1,0 +1,51 @@
+﻿<header>
+    <script>
+
+        function toggleBurgerMenu() {
+            const navbarBurgerContent = document.querySelector('.navbar-burger-content');
+            navbarBurgerContent.classList.toggle('show-navbar-burger-content');
+        }
+
+        function closeBurgerMenu() {
+            const navbarBurgerContent = document.querySelector('.navbar-burger-content');
+            navbarBurgerContent.classList.remove('show-navbar-burger-content');
+        }
+    </script>
+    <nav class="navbar-header">
+        <div class="navbar-header-left">
+            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="about-us">La patésserie</a>
+            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="team">L'équipe</a>
+            <a class="navbar-header-link" asp-area="" asp-controller="Menu" asp-action="menu">Menu</a>
+        </div>
+
+        <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="index"><img
+                src="img\lacroute-blanc.webp"></a>
+
+        <div class="navbar-header-right">
+            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="book">Réserver</a>
+            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="events">Les évènements</a>
+            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="contact">Contact</a>
+        </div>
+
+        <div class="navbar-burger-toggle">
+            <button class="navbar-burger" onclick="toggleBurgerMenu()">&#9776;</button>
+            <ul class="navbar-burger-content">
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="about-us"
+                        onclick="closeBurgerMenu()">La
+                        patésserie</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="team"
+                        onclick="closeBurgerMenu()">L'équipe</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Menu" asp-action="menu"
+                        onclick="closeBurgerMenu()">Menu</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="book"
+                        onclick="closeBurgerMenu()">Réserver</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="events"
+                        onclick="closeBurgerMenu()">Les
+                        évènements</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="contact"
+                        onclick="closeBurgerMenu()">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
