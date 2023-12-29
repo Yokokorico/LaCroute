@@ -81,6 +81,7 @@ display: none;
 
 .show-navbar-burger-content {
     display: block;
+    z-index: 500;
 }
 
 
