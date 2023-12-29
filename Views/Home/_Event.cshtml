@@ -1,0 +1,51 @@
+@model IEnumerable<LaCroute.Models.EventModel>  
+<div class="container container-event">
+    <div class="row d-flex justify-content-around gx-md-6 align-items-center">
+        <div class="col-6 col-md-6 d-flex align-items-center">
+            <img class=" img-fluid" src="https://www.upmenu.com/wp-content/uploads/2021/07/15-restaurant-event-ideas-example-comedy-events.jpg">
+        </div>
+        <div class="col-6 col-md-6 py-2 gy-2 ">  
+            <h2>Liste des evenements</h2>
+            @foreach(var Event in Model){
+                <div class="row mt-2 pt-2 border-top">
+                    <div class="col-6 d-flex align-items-center col-event">
+                        <img class="w-100 img-fluid thumbnail " src=@Event.thumbnail>
+                    </div>
+                    <div class="col-6">
+                        <p class="no-margin">
+                            @Event.title <br>
+                            @Event.date.ToString("dd-MM-yyy")<br>
+                            <div class="truncdescription">
+                                @Event.description
+                            </div>
+                        </p>
+                        <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target='#@Event.title.Replace(" ","")'>
+                            Plus d'information
+                        </button>
+
+                        <div class="modal fade" id='@Event.title.Replace(" ","")' tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">@Event.title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h2>Description</h2>
+                                    <p> @Event.description </p>
+                                    Date de l'événement : @Event.date.ToString("dd-MM-yyy")
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-modal" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+        </div>
+    </div>
+</div>
+></LaCroute.Models.EventModel>

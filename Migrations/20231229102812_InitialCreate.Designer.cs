@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    [Migration("20231229092615_InitialCreate")]
+    [Migration("20231229102812_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
