@@ -17,8 +17,12 @@ namespace LaCroute.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
-            modelBuilder.Entity("LaCroute.Models.EventModels", b =>
+            modelBuilder.Entity("LaCroute.Models.EventModel", b =>
                 {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("create_at")
                         .HasColumnType("TEXT");
 
@@ -28,9 +32,6 @@ namespace LaCroute.Migrations
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("id_event")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("thumbnail")
                         .IsRequired()
@@ -43,7 +44,9 @@ namespace LaCroute.Migrations
                     b.Property<DateTime>("update_at")
                         .HasColumnType("TEXT");
 
-                    b.ToTable("Events");
+                    b.HasKey("id");
+
+                    b.ToTable("Event");
                 });
 #pragma warning restore 612, 618
         }
