@@ -1,7 +1,6 @@
 using LaCroute.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using LaCroute.Data;
 using System;
 using System.Linq;
 
@@ -20,6 +19,14 @@ public static class SeedData
             {
                 return;   // DB has been seeded
             }
+
+            // Look for any movies.
+            if (context.Type.Any())
+            {
+                return;
+            }
+
+
             context.Event.AddRange(
                 new EventModel
                 {
@@ -27,6 +34,29 @@ public static class SeedData
                     description = "WALLAH",
                     thumbnail = "https://www.corpo-events.fr/wp-content/uploads/2013/09/organisation-seminaire-incentive-840x334.jpg",
                     date = DateTime.Parse("1989-2-12"),
+                }
+            );
+
+            context.Type.AddRange(
+                new TypeModel
+                {
+                    Title = "Entrées",
+                },
+                new TypeModel
+                {
+                    Title = "Plats",
+                },
+                new TypeModel
+                {
+                    Title = "Desserts",
+                },
+                new TypeModel
+                {
+                    Title = "Planches apéro",
+                },
+                new TypeModel
+                {
+                    Title = "Boissons",
                 }
             );
             context.SaveChanges();
