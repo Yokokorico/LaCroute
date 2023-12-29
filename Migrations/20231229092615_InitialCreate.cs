@@ -12,10 +12,11 @@ namespace LaCroute.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Events",
+                name: "Event",
                 columns: table => new
                 {
-                    id_event = table.Column<int>(type: "INTEGER", nullable: false),
+                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     title = table.Column<string>(type: "TEXT", nullable: false),
                     description = table.Column<string>(type: "TEXT", nullable: false),
                     thumbnail = table.Column<string>(type: "TEXT", nullable: false),
@@ -25,6 +26,7 @@ namespace LaCroute.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Event", x => x.id);
                 });
         }
 
@@ -32,7 +34,7 @@ namespace LaCroute.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "Event");
         }
     }
 }

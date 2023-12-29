@@ -9,6 +9,6 @@ namespace LaCroute.Data
     base(options)
       {
       }
-    public DbSet<EventModels> Events { get; set;} = default!;
+    public DbSet<EventModel> Event { get; set;} = default!;
   }
 }
