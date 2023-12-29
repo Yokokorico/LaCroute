@@ -23,7 +23,7 @@ namespace LaCroute.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("create_at")
+                    b.Property<DateTime>("created_at")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("date")
@@ -41,12 +41,32 @@ namespace LaCroute.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
 
                     b.ToTable("Event");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.LabelModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Label");
                 });
 
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
@@ -55,14 +75,13 @@ namespace LaCroute.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Create_at")
+                    b.Property<DateTime>("Created_at")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Update_at")
+                    b.Property<DateTime>("Updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -11,5 +11,6 @@ namespace LaCroute.Data
     }
     public DbSet<EventModel> Event { get; set; } = default!;
     public DbSet<TypeModel> Type { get; set; } = default!;
+    public DbSet<LabelModel> Label { get; set; } = default!;
   }
 }

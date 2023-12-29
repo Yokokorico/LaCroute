@@ -26,6 +26,11 @@ public static class SeedData
                 return;
             }
 
+            if (context.Label.Any())
+            {
+                return;
+            }
+
 
             context.Event.AddRange(
                 new EventModel
@@ -59,6 +64,30 @@ public static class SeedData
                     Title = "Boissons",
                 }
             );
+
+            context.Label.AddRange(
+                new LabelModel
+                {
+                    Title = "Végétarien",
+                },
+                new LabelModel
+                {
+                    Title = "Volaille",
+                },
+                new LabelModel
+                {
+                    Title = "Porc",
+                },
+                new LabelModel
+                {
+                    Title = "Alcool",
+                },
+                new LabelModel
+                {
+                    Title = "Sans alcool",
+                }
+            );
+
             context.SaveChanges();
         }
     }
