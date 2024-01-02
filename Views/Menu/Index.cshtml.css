@@ -12,6 +12,7 @@ h2 {
 h3 {
     color: var(--terrine);
     margin: 0;
+    margin-right: 0.5rem;
 }
 
 svg {
@@ -21,3 +22,12 @@ svg {
 .menu {
     padding: 2rem;
 }
+
+img {
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    max-height: 180px;
+    width: 100%;
+}
+

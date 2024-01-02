@@ -21,8 +21,22 @@ namespace LaCroute.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var product = await _context.Product.Include(p => p.Type).ToListAsync();
-            return View(product);
+            var products = await _context.Product.Include(p => p.Type).Include(p => p.ProductLabel).ThenInclude(pl => pl.Label).ToListAsync();
+            var types = await _context.Type.ToListAsync();
+
+            var productLabels = products.ToDictionary(
+                p => p.Id,
+                p => p.ProductLabel.Select(pl => pl.Label).ToList()
+            );
+
+            var viewModel = new MenuViewModel
+            {
+                Products = products,
+                Types = types,
+                ProductLabels = productLabels
+            };
+
+            return View(viewModel);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
