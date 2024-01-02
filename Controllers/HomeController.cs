@@ -13,9 +13,15 @@ namespace LaCroute.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // Création du ViewModel
+            var viewModel = new HomeViewModel
+            {
+                Products = await _context.Event.ToListAsync(),
+            };
+            // Envoi du ViewModel à la vue
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
