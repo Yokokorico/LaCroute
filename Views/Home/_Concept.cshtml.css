@@ -1,0 +1,16 @@
+.container-concept{
+    padding-top: 200px;
+    padding-bottom: 200px;
+    margin: 0;
+    background-color: var(--couenne);
+    max-width: none;
+}
+p{
+    width: 60%;
+}
+
+@media screen and (max-width: 500px) { 
+    p{
+        width: 100%;
+    }
+}

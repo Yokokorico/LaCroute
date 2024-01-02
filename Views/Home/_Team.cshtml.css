@@ -1,0 +1,21 @@
+#bg-team{
+    background-color: var(--pistache);
+    padding-top:300px ;
+    padding-bottom:300px ;
+}
+.m-container{
+    text-align: justify;
+    margin: 0 auto;
+}
+.gx-6{
+    gap: 5rem;
+}
+p{
+    width: 60%;
+}
+
+@media screen and (max-width: 500px) { 
+    p{
+        width: 100%;
+    }
+}

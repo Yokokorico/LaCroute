@@ -1,9 +1,25 @@
+
+using LaCroute.Data;
+using LaCroute.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<LaCrouteContext>(options =>
+options.UseSqlite(builder.Configuration.GetConnectionString("LaCrouteContext")
+?? throw new InvalidOperationException("Connection string 'LaCrouteContext' not found.")));
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
