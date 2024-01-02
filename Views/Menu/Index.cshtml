@@ -1,0 +1,38 @@
+@model LaCroute.Models.MenuViewModel
+
+<div class="menu">
+    <h1>Menu</h1>
+
+    @foreach (var type in Model.Types)
+    {
+        <div class="mb-4">
+            <h2>@type.Title</h2>
+
+            <div class="row m-5">
+                @foreach (var product in Model.Products.Where(p => p.Type.Id == type.Id))
+                {
+                    <div class="col-md-6 mb-4">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="@product.Thumbnail" class="img-fluid rounded" />
+                            </div>
+                            <div class="col-md-7">
+                                <div class="d-flex align-items-center">
+                                    <h3>@product.Title</h3>
+                                    @foreach (var label in Model.ProductLabels[product.Id])
+                                    {
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                        <path fill="#74463f" d="@label.Svg" />
+                                        </svg>
+                                    }
+                                </div>
+                                <p>@product.Price €</p>
+                                <p>@product.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

@@ -10,6 +10,6 @@ public class EventModel{
     public string description {get; set;}
     public string thumbnail {get; set;}
     public DateTime date {get; set;}
-    public DateTime create_at {get; set;} = DateTime.Now;
-    public DateTime update_at {get; set;}
+    public DateTime created_at {get; set;}
+    public DateTime updated_at {get; set;}
 }

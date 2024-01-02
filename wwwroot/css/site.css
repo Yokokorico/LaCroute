@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400&family=Pirata+One&family=VT323&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 0 !important;
+}
+
 :root {
     --couenne: #ffe5dd;
     --rillettes: #ffc7bf;

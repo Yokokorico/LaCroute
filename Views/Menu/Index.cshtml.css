@@ -1,0 +1,33 @@
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    color: var(--terrine);
+}
+
+h2 {
+    color: var(--cacahuete);
+    font-size: 2rem;
+}
+
+h3 {
+    color: var(--terrine);
+    margin: 0;
+    margin-right: 0.5rem;
+}
+
+svg {
+    width: 0.7rem;
+}
+
+.menu {
+    padding: 2rem;
+}
+
+img {
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    max-height: 180px;
+    width: 100%;
+}
+
