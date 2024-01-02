@@ -36,9 +36,18 @@
 .modal-header{
     background-color: var(--terrine);
     color: var(--pistache);
-    text-align: center;
+
 }
 
+.border-top{
+    border-color: var(--terrine) !important;
+    border-width: 4px !important;
+}
+.event-title{
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
 @media screen and (max-width : 600px) {
 
     .truncdescription{

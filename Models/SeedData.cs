@@ -16,10 +16,10 @@ public static class SeedData
                 DbContextOptions<LaCrouteContext>>()))
         {
             // Look for any movies.
-            // if (context.Event.Any())
-            // {
-            //     return;   // DB has been seeded
-            // }
+            if (context.Event.Any())
+            {
+                return;   // DB has been seeded
+            }
             context.Event.AddRange(
                 new EventModel
                 {
