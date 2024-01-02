@@ -1,4 +1,9 @@
+@model LaCroute.ViewModels.HomeViewModel
+<div class="lacroute-footer">
+<a asp-area="" asp-controller="Home" asp-action="index"><img class="footer-logo"
+            src="img\lacroute-logoblanc-penche.png"></a> <br>
 <div class="container-footer">
-      <partial name="_Footer-map.cshtml" />
-      <partial name="_Footer-review.cshtml" />
+      <partial class="footer-map" name="_Footer-map.cshtml" />
+      <partial class="footer-review" name="_Footer-review.cshtml">
+</div>
 </div>

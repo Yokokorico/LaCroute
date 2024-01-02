@@ -1,16 +1,23 @@
 .review {
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
+    padding-inline: 5rem;
+    padding-block: 2rem;
     background-color: #f9f9f9;
     font-family: Arial, sans-serif;
     justify-content: center;
 }
-.user-info {
-    font-weight: bold;
+
+.user-container {
     margin-bottom: 10px;
     text-align: center;
+}
+.user-info {
+    font-weight: bold;
+}
+
+.user-name{
+    font-weight: 400;
 }
 .rating {
     color: #FFD700;
@@ -21,4 +28,22 @@
 .review-text {
     text-align: center;
     line-height: 1.5;
+}
+
+.fa-star {
+    color: #ddd; 
+}
+.checked {
+    color: orange; 
+}
+
+@media screen and (max-width: 1450px) {
+    .Review-Carousel {
+        width: 45%;
+        margin-inline: auto;
+
+    }
+    .review {
+    margin-inline: auto;
+    }
 }

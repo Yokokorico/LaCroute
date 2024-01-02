@@ -50,11 +50,13 @@ namespace LaCroute.Migrations
                 });
 
             modelBuilder.Entity("LaCroute.Models.LabelModel", b =>
+            modelBuilder.Entity("LaCroute.Models.ReviewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+<<<<<<< HEAD
                     b.Property<DateTime>("Created_at")
                         .HasColumnType("TEXT");
 
@@ -112,10 +114,29 @@ namespace LaCroute.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Updated_at")
+=======
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("updated_at")
+>>>>>>> 576991603de965e97043dc67d6e6839e902563fe
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+<<<<<<< HEAD
                     b.HasIndex("TypeId");
 
                     b.ToTable("Product");
@@ -182,6 +203,9 @@ namespace LaCroute.Migrations
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
                 {
                     b.Navigation("Products");
+=======
+                    b.ToTable("Review");
+>>>>>>> 576991603de965e97043dc67d6e6839e902563fe
                 });
 #pragma warning restore 612, 618
         }

@@ -19,5 +19,6 @@ namespace LaCroute.Data
     public DbSet<LabelModel> Label { get; set; } = default!;
     public DbSet<ProductModel> Product { get; set; } = default!;
     public DbSet<ProductLabelModel> ProductLabel { get; set; } = default!;
+    public DbSet<ReviewModel> Review { get; set; } = default!;
   }
 }
