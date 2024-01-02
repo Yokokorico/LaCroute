@@ -4,7 +4,7 @@ using LaCroute.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// var context = new LaCrouteContext(new DbContextOptions<LaCrouteContext>());
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -13,7 +13,7 @@ options.UseSqlite(builder.Configuration.GetConnectionString("LaCrouteContext")
 ?? throw new InvalidOperationException("Connection string 'LaCrouteContext' not found.")));
 
 var app = builder.Build();
-
+// context.Database.Migrate();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

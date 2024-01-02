@@ -1,0 +1,77 @@
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+<script src='fullcalendar/dist/index.global.js'></script>
+<script src='fullcalendar/core/locales-all.global.js'></script>
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'listMonth',
+        contentHeight: 'auto',
+        plugins: ['interactionPlugin'],
+        locale: 'fr',
+        views: {
+            listDay: { buttonText: 'list day' },
+            listWeek: { buttonText: 'list week' },
+            listMonth: { buttonText: 'list month' }
+        },
+        themeSystem: 'bootstrap5',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'listMonth,listWeek,listDay'
+        },
+        dateClick: function(info) {
+            alert('Date: ' + info.title);
+            alert('\n Start: ' + info.start);
+            alert('\n End: ' + info.end);
+        },
+        events: [
+            {
+                title  : 'Madama Pavochko',
+                start  : '2024-01-02T14:30:00',
+                end  : '2024-01-02T16:30:00'
+            },
+            {
+                title  : 'Le Cuistot JB',
+                start  : '2024-01-02T11:30:00',
+                end  : '2024-01-02T13:30:00'
+            },
+            {
+                title  : 'KODJA affamé',
+                start  : '2024-01-03T12:30:00',
+                end  : '2024-01-03T14:30:00'
+            },{
+                title  : 'Madama',
+                start  : '2024-01-04T14:30:00',
+                end  : '2024-01-04T16:30:00'
+            },
+            {
+                title  : 'JB',
+                start  : '2024-01-08T11:30:00',
+                end  : '2024-01-08T13:30:00'
+            },
+            {
+                title  : 'affamé',
+                start  : '2024-01-05T12:30:00',
+                end  : '2024-01-05T14:30:00'
+            },
+            {
+                title  : '',
+                start  : '2024-01-05T14:30:00',
+                end  : '2024-01-05T16:30:00'
+            }
+        ],
+        
+    });
+    calendar.render();
+});
+
+
+
+</script>
+
+<div class="container">
+    <div id='calendar'></div>
+</div>
+
