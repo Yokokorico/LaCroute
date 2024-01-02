@@ -1,0 +1,8 @@
+.container-footer {
+   background-color: var(--terrine);
+   border-top: 10px solid var(--pistache);
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+}

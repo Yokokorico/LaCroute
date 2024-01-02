@@ -1,13 +1,54 @@
-<div class="review">
-    <div class="user-info">
-        <span>Henri Yette</span>
-        <span>(5/5)</span>
-    </div>
-    <div class="rating">
-        &#9733;&#9733;&#9733;&#9733;&#9733;
-    </div>
-    <div class="review-text">
-        <p>Il faut aimer le pâté. Mais moi j'aime bien le pâté. C'est bon le pâté.</p>
+@model LaCroute.ViewModels.HomeViewModel
 
+<script>
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: 10000
+        });
+    });
+</script>
+
+<div id="#carouselReviews" class="carousel slide" data-bs-ride="carousel">
+    <div class="Review-Carousel carousel-inner">
+        @for (var i = 0; i < Model.Reviews.Count; i++)
+        {
+            <div class="carousel-item @(i == 0 ? "active" : "")">
+                <div class="review">
+                    <div class="user-container">
+                        <span class="user-info">@Model.Reviews[i].Title</span><br>
+                        <span class="user-name">@Model.Reviews[i].Name</span>
+                    </div>
+                    <div class="rating">
+                        <span>
+                            @{
+                                // Number of yellow stars
+                                var yellowStars = Model.Reviews[i].Rating;
+                                // Number of grey stars
+                                var greyStars = 5 - yellowStars;
+                            }
+                            @for (var j = 0; j < yellowStars; j++)
+                            {
+                                <span class="fa fa-star checked">&#9733;</span>
+                            }
+                            @for (var j = 0; j < greyStars; j++)
+                            {
+                                <span class="fa fa-star">&#9733;</span>
+                            }
+                        </span>
+                    </div>
+                    <div class="review-text">
+                        <span class="review-text">@Model.Reviews[i].Description</span>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselReviews" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselReviews" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
