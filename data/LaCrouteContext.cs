@@ -2,13 +2,14 @@ using System.Security.Cryptography.X509Certificates;
 using LaCroute.Models;
 using Microsoft.EntityFrameworkCore;
 namespace LaCroute.Data
-  {
-  public class LaCrouteContext: DbContext
+{
+  public class LaCrouteContext : DbContext
   {
     public LaCrouteContext(DbContextOptions<LaCrouteContext> options) :
     base(options)
-      {
-      }
-    public DbSet<EventModel> Event { get; set;} = default!;
+    {
+    }
+    public DbSet<EventModel> Event { get; set; } = default!;
+    public DbSet<ReviewModel> Review { get; set; } = default!;
   }
 }
