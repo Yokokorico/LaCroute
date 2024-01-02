@@ -50,13 +50,11 @@ namespace LaCroute.Migrations
                 });
 
             modelBuilder.Entity("LaCroute.Models.LabelModel", b =>
-            modelBuilder.Entity("LaCroute.Models.ReviewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-<<<<<<< HEAD
                     b.Property<DateTime>("Created_at")
                         .HasColumnType("TEXT");
 
@@ -114,7 +112,21 @@ namespace LaCroute.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Updated_at")
-=======
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.ReviewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
@@ -131,15 +143,11 @@ namespace LaCroute.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("updated_at")
->>>>>>> 576991603de965e97043dc67d6e6839e902563fe
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
-                    b.HasIndex("TypeId");
-
-                    b.ToTable("Product");
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
@@ -203,9 +211,6 @@ namespace LaCroute.Migrations
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
                 {
                     b.Navigation("Products");
-=======
-                    b.ToTable("Review");
->>>>>>> 576991603de965e97043dc67d6e6839e902563fe
                 });
 #pragma warning restore 612, 618
         }
