@@ -7,28 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LaCroute.Controllers
 {
-    public class HomeController : Controller
+    public class BookController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<BookController> _logger;
         private readonly LaCrouteContext _context;
-        public HomeController(ILogger<HomeController> logger, LaCrouteContext context)
+        public BookController(ILogger<BookController> logger, LaCrouteContext context)
         {
             _logger = logger;
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            // Création du ViewModel
-            var viewModel = new HomeViewModel
-            {
-                Events = await _context.Event.OrderByDescending(e => e.create_at).Take(3).ToListAsync()
-            };
-            // Envoi du ViewModel à la vue
-            return View(viewModel);
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Booking()
         {
             return View();
         }
