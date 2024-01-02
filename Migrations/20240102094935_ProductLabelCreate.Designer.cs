@@ -3,6 +3,7 @@ using System;
 using LaCroute.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    partial class LaCrouteContextModelSnapshot : ModelSnapshot
+    [Migration("20240102094935_ProductLabelCreate")]
+    partial class ProductLabelCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -72,6 +75,26 @@ namespace LaCroute.Migrations
                     b.ToTable("Label");
                 });
 
+            modelBuilder.Entity("LaCroute.Models.ProductLabelModel", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("LabelId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("ProductLabel");
+                });
+
             modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
                 {
                     b.Property<int>("Id")
@@ -93,15 +116,13 @@ namespace LaCroute.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TypeId")
+                    b.Property<int>("TypeId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("Product");
                 });
@@ -124,20 +145,6 @@ namespace LaCroute.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Type");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
-                {
-                    b.HasOne("LaCroute.Models.TypeModel", "Type")
-                        .WithMany("Products")
-                        .HasForeignKey("TypeId");
-
-                    b.Navigation("Type");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
