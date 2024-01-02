@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    [Migration("20231229092615_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231229135632_LabelCreate")]
+    partial class LabelCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace LaCroute.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("create_at")
+                    b.Property<DateTime>("created_at")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("date")
@@ -44,12 +44,52 @@ namespace LaCroute.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("update_at")
+                    b.Property<DateTime>("updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
 
                     b.ToTable("Event");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.LabelModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Label");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Type");
                 });
 #pragma warning restore 612, 618
         }
