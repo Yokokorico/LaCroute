@@ -18,7 +18,7 @@ namespace LaCroute.Controllers
             // Création du ViewModel
             var viewModel = new HomeViewModel
             {
-                Products = await _context.Event.ToListAsync(),
+                Products = await _context.Event.OrderByDescending(e => e.create_at).Take(3).ToListAsync()
             };
             // Envoi du ViewModel à la vue
             return View(viewModel);
