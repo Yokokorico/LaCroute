@@ -3,6 +3,7 @@ using System;
 using LaCroute.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    partial class LaCrouteContextModelSnapshot : ModelSnapshot
+    [Migration("20231229141200_ProductCreate")]
+    partial class ProductCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -58,9 +61,6 @@ namespace LaCroute.Migrations
                     b.Property<DateTime>("Created_at")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Svg")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
@@ -70,21 +70,6 @@ namespace LaCroute.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Label");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.ProductLabelModel", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("LabelId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ProductId", "LabelId");
-
-                    b.HasIndex("LabelId");
-
-                    b.ToTable("ProductLabel");
                 });
 
             modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
@@ -108,15 +93,10 @@ namespace LaCroute.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TypeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Updated_at")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("Product");
                 });
@@ -139,49 +119,6 @@ namespace LaCroute.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Type");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.ProductLabelModel", b =>
-                {
-                    b.HasOne("LaCroute.Models.LabelModel", "Label")
-                        .WithMany("ProductLabel")
-                        .HasForeignKey("LabelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LaCroute.Models.ProductModel", "Product")
-                        .WithMany("ProductLabel")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Label");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
-                {
-                    b.HasOne("LaCroute.Models.TypeModel", "Type")
-                        .WithMany("Products")
-                        .HasForeignKey("TypeId");
-
-                    b.Navigation("Type");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.LabelModel", b =>
-                {
-                    b.Navigation("ProductLabel");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
-                {
-                    b.Navigation("ProductLabel");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
