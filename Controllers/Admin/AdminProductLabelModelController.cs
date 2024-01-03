@@ -37,7 +37,7 @@ namespace LaCroute
             var productLabelModel = await _context.ProductLabel
                 .Include(p => p.Label)
                 .Include(p => p.Product)
-                .FirstOrDefaultAsync(m => m.ProductId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (productLabelModel == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,LabelId")] ProductLabelModel productLabelModel)
+        public async Task<IActionResult> Create([Bind("Id,ProductId,LabelId")] ProductLabelModel productLabelModel)
         {
             if (ModelState.IsValid)
             {
@@ -95,9 +95,9 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,LabelId")] ProductLabelModel productLabelModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductId,LabelId")] ProductLabelModel productLabelModel)
         {
-            if (id != productLabelModel.ProductId)
+            if (id != productLabelModel.Id)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace LaCroute
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductLabelModelExists(productLabelModel.ProductId))
+                    if (!ProductLabelModelExists(productLabelModel.Id))
                     {
                         return NotFound();
                     }
@@ -138,7 +138,7 @@ namespace LaCroute
             var productLabelModel = await _context.ProductLabel
                 .Include(p => p.Label)
                 .Include(p => p.Product)
-                .FirstOrDefaultAsync(m => m.ProductId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (productLabelModel == null)
             {
                 return NotFound();
@@ -164,7 +164,7 @@ namespace LaCroute
 
         private bool ProductLabelModelExists(int id)
         {
-            return _context.ProductLabel.Any(e => e.ProductId == id);
+            return _context.ProductLabel.Any(e => e.Id == id);
         }
     }
 }
