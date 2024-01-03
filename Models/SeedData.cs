@@ -14,6 +14,31 @@ namespace LaCroute.Models
                 serviceProvider.GetRequiredService<DbContextOptions<LaCrouteContext>>()))
             {
                 
+                context.Database.EnsureCreated();
+
+                if (context.Event.Any())
+                {
+                    return; // DB has been seeded
+                }
+                
+                                if (context.Type.Any())
+                {
+                    return; // DB has been seeded
+                }
+                                if (context.Label.Any())
+                {
+                    return; // DB has been seeded
+                }
+                                if (context.ProductLabel.Any())
+                {
+                    return; // DB has been seeded
+                }
+
+                                if (context.Product.Any())
+                {
+                    return; // DB has been seeded
+                }
+
                 // Event
                 context.Event.AddRange(
                     new EventModel

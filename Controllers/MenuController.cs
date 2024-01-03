@@ -33,7 +33,8 @@ namespace LaCroute.Controllers
             {
                 Products = products,
                 Types = types,
-                ProductLabels = productLabels
+                ProductLabels = productLabels,
+                // Reviews = await _context.Review.OrderByDescending(e => e.created_at).Take(5).ToListAsync()
             };
 
             return View(viewModel);

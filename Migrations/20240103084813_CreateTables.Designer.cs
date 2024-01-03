@@ -11,12 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-<<<<<<<< HEAD:Migrations/20240102145655_InitialCreate.Designer.cs
-    [Migration("20240102145655_InitialCreate")]
-========
-    [Migration("20240102150838_InitialCreate")]
->>>>>>>> 92e5f76e34d752b0bbe7e7207d84ef479d0adbc3:Migrations/20240102150838_InitialCreate.Designer.cs
-    partial class InitialCreate
+    [Migration("20240103084813_CreateTables")]
+    partial class CreateTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

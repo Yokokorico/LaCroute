@@ -12,7 +12,7 @@ namespace LaCroute.ViewModels
         public HomeViewModel()
         {
             Events = new List<EventModel>();
-            Reviews = new List<ReviewModel>();
+            // Reviews = new List<ReviewModel>();
         }
     }
 }
