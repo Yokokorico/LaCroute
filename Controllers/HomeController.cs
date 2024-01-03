@@ -23,7 +23,7 @@ namespace LaCroute.Controllers
             // Création du ViewModel
             var viewModel = new HomeViewModel
             {
-                Events = await _context.Event.OrderByDescending(e => e.create_at).Take(3).ToListAsync(),
+                Events = await _context.Event.OrderByDescending(e => e.created_at).Take(3).ToListAsync(),
             };
 
 
