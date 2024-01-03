@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using LaCroute.Data;
+using LaCroute.Migrations;
 using LaCroute.Models;
 using LaCroute.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -25,11 +26,20 @@ namespace LaCroute.Controllers
             var viewModel = new HomeViewModel
             {
                 Events = await _context.Event.OrderByDescending(e => e.create_at).Take(3).ToListAsync(),
-                Reviews = await _context.Review.OrderByDescending(e => e.created_at).Take(5).ToListAsync()
             };
-            // Envoi du ViewModel à la vue
+
+
             return View(viewModel);
         }
+
+        public async Task<IActionResult> Footer()
+        {
+            var Reviews = await _context.Review.OrderByDescending(e => e.created_at).Take(5).ToListAsync();
+            ViewData["Reviews"] = Reviews;
+            return View("_Footer-review");
+
+        }
+
 
         public IActionResult Privacy()
         {
