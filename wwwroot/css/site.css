@@ -6,12 +6,13 @@
 }
 
 .container {
+
   padding: 0 !important;
 }
 
 :root {
-    --couenne: #ffe5dd;
-    --rillettes: #ffc7bf;
+    --couenne: rgb(255, 229, 221);
+    --rillettes: rgb(255, 199, 191);
     --terrine: #74463f;
     --pistache: #dde2c8;
     --cacahuete: #d06a4e;
