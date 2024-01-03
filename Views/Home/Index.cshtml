@@ -1,7 +1,9 @@
-﻿@{
+﻿@model LaCroute.ViewModels.HomeViewModel
+@{
     ViewData["Title"] = "La Croûte";
 }
 
 <partial name="_Concept.cshtml"></partial>
 <partial name="_Team.cshtml"></partial>
+@await Html.PartialAsync("_Event", Model.Events)
 

@@ -22,7 +22,7 @@ options.UseSqlite(builder.Configuration.GetConnectionString("LaCrouteContext")
 
 
 var app = builder.Build();
-
+// context.Database.Migrate();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

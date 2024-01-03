@@ -1,0 +1,71 @@
+.container-event{
+    padding-top: 200px;
+    padding-bottom: 200px;
+    margin: 0;
+    background-color: var(--cacahuete);
+    max-width: none;
+}
+.truncdescription{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3; /* Définir le nombre de lignes à afficher */
+    max-height: 5em;
+    text-overflow: ellipsis;
+}
+.truncdescription::after {
+    content: '...'; /* Ajouter les points de suspension */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%); /* Fond dégradé pour masquer la fin du texte */
+}
+.col-event{
+    padding-left: 0;
+}
+.btn-color{
+    background-color: var(--pistache);
+}
+
+.modal-content{
+    background-color: var(--pistache);
+}
+.btn-modal{
+    background-color: var(--cacahuete);
+}
+.modal-header{
+    background-color: var(--terrine);
+    color: var(--pistache);
+
+}
+
+.border-top{
+    border-color: var(--terrine) !important;
+    border-width: 4px !important;
+}
+.event-title{
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+@media screen and (max-width : 600px) {
+
+    .truncdescription{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2; /* Définir le nombre de lignes à afficher */
+        max-height: 5em;
+        text-overflow: ellipsis;
+    }
+    .truncdescription::after {
+        content: '...'; /* Ajouter les points de suspension */
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%); /* Fond dégradé pour masquer la fin du texte */
+    }
+}
+.no-margin{
+    margin: 0;
+}

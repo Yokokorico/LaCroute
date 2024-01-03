@@ -12,8 +12,6 @@ namespace LaCroute.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly LaCrouteContext _context;
-
-
         public HomeController(ILogger<HomeController> logger, LaCrouteContext context)
         {
             _logger = logger;
