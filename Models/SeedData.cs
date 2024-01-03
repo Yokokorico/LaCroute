@@ -74,18 +74,18 @@ namespace LaCroute.Models
 
 
                 // Types
-                var planchesType = new TypeModel { Title = "Planches após" };
+                var boissonsType = new TypeModel { Title = "Boissons" };
+                var planchesType = new TypeModel { Title = "Planches apéros" };
                 var entreesType = new TypeModel { Title = "Entrées" };
                 var platsType = new TypeModel { Title = "Plats" };
                 var dessertsType = new TypeModel { Title = "Desserts" };
-                var boissonsType = new TypeModel { Title = "Boissons" };
 
                 context.Type.AddRange(
+                    boissonsType,
                     planchesType,
                     entreesType,
                     platsType,
-                    dessertsType,
-                    boissonsType
+                    dessertsType
                 );
 
                 // Labels
@@ -148,10 +148,91 @@ namespace LaCroute.Models
                     Type = platsType,
                     Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU4TV7Weu2aWfLicGrgpczrJKFn-rzviMJiA&usqp=CAU",
                 };
+                var terrine = new ProductModel
+                {
+                    Title = "La Terrine",
+                    Description = "Découvrez notre sélection exquise de terrines, préparées avec soin pour vous offrir une expérience gustative inoubliable. Chaque terrine est élaborée avec des ingrédients de qualité, offrant une combinaison parfaite de saveurs et de textures.",
+                    Price = 15.50,
+                    Type = planchesType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAQgUXe05W0y3IvAHuPeElnzHbSrSy3qi--A&usqp=CAU",
+                };
+                var gourmande = new ProductModel
+                {
+                    Title = "La Gourmande",
+                    Description = "Laissez-vous surprendre par notre création originale, l'Originalité Gourmande. Une fusion audacieuse de pâtés artisanaux, de rillettes parfumées et de condiments uniques. Cette expérience gastronomique vous transporte au-delà des frontières traditionnelles du goût.",
+                    Price = 17.50,
+                    Type = planchesType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCrKKzvZw3Wcj9JzlvKok-ImgAYKhqRbOBhg&usqp=CAU",
+                };
+                var fromagere = new ProductModel
+                {
+                    Title = "La Fromagère",
+                    Description = "Succombez à notre Planche Apéro Pâtés & Fromages, une alliance parfaite entre la richesse du pâté de campagne et la délicatesse des fromages sélectionnés. Accompagnée de pains variés et de condiments, cette planche vous transporte dans un voyage gustatif unique.",
+                    Price = 19.95,
+                    Type = planchesType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7jWPC0r1tAo8NHX7PoRhHNkympdukCc804w&usqp=CAU",
+                };
+                var pateDessert = new ProductModel
+                {
+                    Title = "Pâté de Fruits Confits en Gelée de Vin Rouge",
+                    Description = "Succombez à notre Planche Apéro Pâtés & Fromages, une alliance parfaite entre la richesse du pâté de campagne et la délicatesse des fromages sélectionnés. Accompagnée de pains variés et de condiments, cette planche vous transporte dans un voyage gustatif unique.",
+                    Price = 13.25,
+                    Type = dessertsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG_PdV1jgcI3RvseLTsaANHNDpvTF_NNXSxw&usqp=CAU",
+                };
+                var rillettesDessert = new ProductModel
+                {
+                    Title = "Rillettes de Fruits Rouges sur Pain d'Épices",
+                    Description = "Des fruits rouges macérés et cuits lentement, présentés comme des rillettes sur des tranches de pain d'épices. Une alternative sucrée et savoureuse à l'idée traditionnelle de rillettes.",
+                    Price = 12.50,
+                    Type = dessertsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRck3AFPBUAsizLIAyylICDEBACK6oi9S8fYw&usqp=CAU",
+                };
+                var suze = new ProductModel
+                {
+                    Title = "Suze",
+                    Description = "Liqueur d'apéritif à base de gentiane, offrant une amertume subtile et rafraîchissante.",
+                    Price = 8.00,
+                    Type = boissonsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6tI-ZWWHNkQWdBZTafzvb8CsSqhaZtMPVBA&usqp=CAU",
+                };
+                var ricard = new ProductModel
+                {
+                    Title = "Ricard",
+                    Description = "Anisé apéritif emblématique de la Méditerranée, idéal pour partager un moment convivial.",
+                    Price = 6.50,
+                    Type = boissonsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSm4GxWTvam22boH1ghVxatj61DFY0PPvD8L96TUqF_ZE1ZkrhONStUhqgged-Fb3Uh9M&usqp=CAU",
+                };
+                var biere = new ProductModel
+                {
+                    Title = "Bière",
+                    Description = "Bière fraîche de qualité pour accompagner vos plats et moments de détente.",
+                    Price = 4.00,
+                    Type = boissonsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCQ85KbbvwTnfOuof4ZWg5zOLiyScMavuwrg&usqp=CAU",
+                };
+                var picon = new ProductModel
+                {
+                    Title = "Picon Bière",
+                    Description = "L'alliance parfaite entre la bière et le Picon, une boisson rafraîchissante et pleine de saveurs.",
+                    Price = 7.50,
+                    Type = boissonsType,
+                    Thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP0s122N1EtNinbrki_6upMPWvqrpPMhyKoQ&usqp=CAU",
+                };
                 context.Product.AddRange(
                     pateEnCroute,
                     pateCampagne,
-                    potjevlesch
+                    potjevlesch,
+                    terrine,
+                    gourmande,
+                    fromagere,
+                    pateDessert,
+                    rillettesDessert,
+                    suze,
+                    ricard,
+                    biere,
+                    picon
                 );
 
                 //ProductLabel
@@ -175,6 +256,51 @@ namespace LaCroute.Models
                     {
                         Product = potjevlesch,
                         Label = volaille
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = terrine,
+                        Label = volaille
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = terrine,
+                        Label = porc
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = gourmande,
+                        Label = porc
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = gourmande,
+                        Label = volaille
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = fromagere,
+                        Label = porc
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = suze,
+                        Label = alcool
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = ricard,
+                        Label = alcool
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = biere,
+                        Label = alcool
+                    },
+                    new ProductLabelModel
+                    {
+                        Product = picon,
+                        Label = alcool
                     }
                 );
 
