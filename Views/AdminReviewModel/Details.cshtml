@@ -4,51 +4,55 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container">
+    <div class="text-center">
 
-<div>
-    <h4>ReviewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.created_at)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.created_at)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.updated_at)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.updated_at)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <h1>Détail de l'avis</h1>
+
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Nom
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    Titre
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    Description
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    Evaluation
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Rating)
+                </dd>
+                <dt class="col-sm-2">
+                    Date de création
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.created_at)
+                </dd>
+                <dt class="col-sm-2">
+                    Date de mise à jour
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.updated_at)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-admin mb-2">Editer</a>
+            <a asp-action="Index" class="btn btn-admin mb-2">Retour</a>
+        </div>
+    </div>
 </div>

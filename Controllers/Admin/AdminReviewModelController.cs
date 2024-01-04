@@ -58,6 +58,9 @@ namespace LaCroute
         {
             if (ModelState.IsValid)
             {
+                reviewModel.created_at = DateTime.Now;
+                reviewModel.updated_at = DateTime.Now;
+
                 _context.Add(reviewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +100,15 @@ namespace LaCroute
             {
                 try
                 {
+                    var existingReview = await _context.Review.AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
+
+                    if (existingReview != null)
+                    {
+                        reviewModel.created_at = existingReview.created_at;
+                    }
+
+                    reviewModel.updated_at = DateTime.Now;
+
                     _context.Update(reviewModel);
                     await _context.SaveChangesAsync();
                 }

@@ -58,6 +58,9 @@ namespace LaCroute
         {
             if (ModelState.IsValid)
             {
+                typeModel.Created_at = DateTime.Now;
+                typeModel.Updated_at = DateTime.Now;
+
                 _context.Add(typeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +100,15 @@ namespace LaCroute
             {
                 try
                 {
+                    var existingType = await _context.Type.AsNoTracking().FirstOrDefaultAsync(t => t.Id == id);
+
+                    if (existingType != null)
+                    {
+                        typeModel.Created_at = existingType.Created_at;
+                    }
+
+                    typeModel.Updated_at = DateTime.Now;
+
                     _context.Update(typeModel);
                     await _context.SaveChangesAsync();
                 }
