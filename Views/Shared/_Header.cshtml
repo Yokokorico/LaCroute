@@ -18,8 +18,11 @@
             <a class="navbar-header-link" asp-area="" asp-controller="Menu" asp-action="index">Menu</a>
         </div>
 
-        <a class="navbar-logo" asp-area="" asp-controller="Home" asp-action="index"><img
-                src="~\img\lacroute-blanc.webp"></a>
+        <a asp-area="" asp-controller="Home" asp-action="index">
+            <img src="~/img/lacroute-blanc.webp" class="img-fluid ml-lg-0 ml-3"
+                style="max-width: 11rem; padding-block: 1rem; margin-inline: 1rem;">
+        </a>
+
 
         <div class="navbar-header-right">
             <a class="navbar-header-link" asp-area="" asp-controller="Book" asp-action="booking">Réserver</a>

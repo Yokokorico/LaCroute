@@ -1,10 +1,16 @@
 .navbar-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--terrine);
     gap: 3rem;
     border-bottom: 10px solid var(--pistache);
+    margin-bottom: 44rem;
+
 }
 
 .navbar-header-left {
@@ -17,33 +23,28 @@
     gap: 2.5rem;
 }
 
-.navbar-logo img {
-    max-height: 5.5rem;
-    padding : 1rem;
-}
-
 
 .navbar-header-link {
     color: white;
     font-size: 1.5rem;
     font-family: 'VT323';
     text-decoration: none;
-  }
-  
+}
+
 
 .navbar-burger-toggle {
-display: none;
+    display: none;
 }
 
 @media screen and (max-width: 1000px) {
     .navbar-header-left {
-        display : none;
+        display: none;
     }
 
     .navbar-header-right {
-        display : none;
+        display: none;
     }
-    
+
     .navbar-header {
         justify-content: space-between;
     }
@@ -54,40 +55,43 @@ display: none;
     }
 
     .navbar-burger {
-        width : 3rem;
+        width: 3rem;
         aspect-ratio: 1;
         border-radius: 10px;
         background: var(--pistache);
         border: 0;
     }
-    
-.navbar-burger-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    height: fit-content;
-    text-align: right;
-    background: var(--cacahuete);
-    padding-right: 1rem;
-    font-family: 'VT323';
-    font-size: xx-large;
-    list-style-type: none;
-    padding: 1.75rem;
-    margin-right: 1rem;
-    border-radius: 10px;
-    border: 10px solid var(--pistache);
 
-}
+    .navbar-burger-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        height: fit-content;
+        text-align: right;
+        background: var(--cacahuete);
+        padding-right: 1rem;
+        font-family: 'VT323';
+        font-size: xx-large;
+        list-style-type: none;
+        padding: 1.75rem;
+        margin-right: 1rem;
+        border-radius: 10px;
+        border: 10px solid var(--pistache);
 
-.show-navbar-burger-content {
-    display: block;
-    z-index: 500;
-}
+    }
+
+    .show-navbar-burger-content {
+        display: block;
+        z-index: 500;
+    }
 
 
 
     .navbar-burger-links {
         display: flex;
     }
-   
+
+    
+
+
 }
