@@ -9,11 +9,11 @@ namespace LaCroute.Data
     base(options)
     {
     }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-      base.OnModelCreating(modelBuilder);
-      modelBuilder.Entity<ProductLabelModel>().HasKey(t => new { t.ProductId, t.LabelId });
-    }
+    // protected override void OnModelCreating(ModelBuilder modelBuilder)
+    // {
+    //   base.OnModelCreating(modelBuilder);
+    //   modelBuilder.Entity<ProductLabelModel>().HasKey(t => new { t.ProductId, t.LabelId });
+    // }
     public DbSet<EventModel> Event { get; set; } = default!;
     public DbSet<TypeModel> Type { get; set; } = default!;
     public DbSet<LabelModel> Label { get; set; } = default!;
