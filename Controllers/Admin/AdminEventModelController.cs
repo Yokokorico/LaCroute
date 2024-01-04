@@ -58,6 +58,9 @@ namespace LaCroute
         {
             if (ModelState.IsValid)
             {
+                eventModel.created_at = DateTime.Now;
+                eventModel.updated_at = DateTime.Now;
+
                 _context.Add(eventModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +100,15 @@ namespace LaCroute
             {
                 try
                 {
+                    var existingEvent = await _context.Event.AsNoTracking().FirstOrDefaultAsync(e => e.id == id);
+
+                    if (existingEvent != null)
+                    {
+                        eventModel.created_at = existingEvent.created_at;
+                    }
+
+                    eventModel.updated_at = DateTime.Now;
+                    
                     _context.Update(eventModel);
                     await _context.SaveChangesAsync();
                 }
