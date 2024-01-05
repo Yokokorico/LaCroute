@@ -3,6 +3,7 @@ using System;
 using LaCroute.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    partial class LaCrouteContextModelSnapshot : ModelSnapshot
+    [Migration("20240104103643_Availabilties")]
+    partial class Availabilties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -45,34 +48,6 @@ namespace LaCroute.Migrations
                     b.HasIndex("tableId");
 
                     b.ToTable("Availabilties");
-                });
-
-            modelBuilder.Entity("LaCroute.Models.Book", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateOnly>("date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("phoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("seats")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<TimeSpan>("time")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LaCroute.Models.EventModel", b =>
