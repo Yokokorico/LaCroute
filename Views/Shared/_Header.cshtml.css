@@ -36,6 +36,10 @@
     display: none;
 }
 
+.connect-button {
+    float: right;
+}
+
 @media screen and (max-width: 1000px) {
     .navbar-header-left {
         display: none;

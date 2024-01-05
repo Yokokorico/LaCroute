@@ -18,6 +18,10 @@
     --cacahuete: #d06a4e;
 }
 
+.bg-couenne {
+    background-color: var(--couenne);
+}
+
     html {
   font-size: 14px;
 }

@@ -2,11 +2,13 @@ using System.Diagnostics;
 using LaCroute.Data;
 using LaCroute.Models;
 using LaCroute.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace LaCroute.Controllers
 {
+
     public class BookController : Controller
     {
         private readonly ILogger<BookController> _logger;
