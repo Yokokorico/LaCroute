@@ -58,6 +58,9 @@ namespace LaCroute
         {
             if (ModelState.IsValid)
             {
+                productModel.Created_at = DateTime.Now;
+                productModel.Updated_at = DateTime.Now;
+
                 _context.Add(productModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +100,14 @@ namespace LaCroute
             {
                 try
                 {
+                    var existingProduct = await _context.Product.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+
+                    if (existingProduct != null)
+                    {
+                        productModel.Created_at = existingProduct.Created_at;
+                    }
+
+                    productModel.Updated_at = DateTime.Now;
                     _context.Update(productModel);
                     await _context.SaveChangesAsync();
                 }

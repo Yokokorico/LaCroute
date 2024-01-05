@@ -58,6 +58,9 @@ namespace LaCroute
         {
             if (ModelState.IsValid)
             {
+                labelModel.Created_at = DateTime.Now;
+                labelModel.Updated_at = DateTime.Now;
+
                 _context.Add(labelModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +100,15 @@ namespace LaCroute
             {
                 try
                 {
+                    var existingLabel = await _context.Label.AsNoTracking().FirstOrDefaultAsync(l => l.Id == id);
+
+                    if (existingLabel != null)
+                    {
+                        labelModel.Created_at = existingLabel.Created_at;
+                    }
+
+                    labelModel.Updated_at = DateTime.Now;
+
                     _context.Update(labelModel);
                     await _context.SaveChangesAsync();
                 }

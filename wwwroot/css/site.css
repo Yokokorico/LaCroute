@@ -76,3 +76,12 @@ h2 {
 .pb-3 {
   padding-bottom: 0 !important;
 }
+
+.btn-admin {
+  background-color: var(--cacahuete);
+  padding: 0.3rem 1rem;
+  color: var(--couenne);
+  font-weight: 600;
+  font-size: 14px;
+}
+

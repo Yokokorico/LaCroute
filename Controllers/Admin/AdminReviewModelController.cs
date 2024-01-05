@@ -10,22 +10,22 @@ using LaCroute.Models;
 
 namespace LaCroute
 {
-    public class AdminTypeModelController : Controller
+    public class AdminReviewModelController : Controller
     {
         private readonly LaCrouteContext _context;
 
-        public AdminTypeModelController(LaCrouteContext context)
+        public AdminReviewModelController(LaCrouteContext context)
         {
             _context = context;
         }
 
-        // GET: AdminTypeModel
+        // GET: AdminReviewModel
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Type.ToListAsync());
+            return View(await _context.Review.ToListAsync());
         }
 
-        // GET: AdminTypeModel/Details/5
+        // GET: AdminReviewModel/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,42 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type
+            var reviewModel = await _context.Review
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeModel == null)
+            if (reviewModel == null)
             {
                 return NotFound();
             }
 
-            return View(typeModel);
+            return View(reviewModel);
         }
 
-        // GET: AdminTypeModel/Create
+        // GET: AdminReviewModel/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminTypeModel/Create
+        // POST: AdminReviewModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Created_at,Updated_at")] TypeModel typeModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Title,Description,Rating,created_at,updated_at")] ReviewModel reviewModel)
         {
             if (ModelState.IsValid)
             {
-                typeModel.Created_at = DateTime.Now;
-                typeModel.Updated_at = DateTime.Now;
+                reviewModel.created_at = DateTime.Now;
+                reviewModel.updated_at = DateTime.Now;
 
-                _context.Add(typeModel);
+                _context.Add(reviewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeModel);
+            return View(reviewModel);
         }
 
-        // GET: AdminTypeModel/Edit/5
+        // GET: AdminReviewModel/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,22 +76,22 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type.FindAsync(id);
-            if (typeModel == null)
+            var reviewModel = await _context.Review.FindAsync(id);
+            if (reviewModel == null)
             {
                 return NotFound();
             }
-            return View(typeModel);
+            return View(reviewModel);
         }
 
-        // POST: AdminTypeModel/Edit/5
+        // POST: AdminReviewModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Created_at,Updated_at")] TypeModel typeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Title,Description,Rating,created_at,updated_at")] ReviewModel reviewModel)
         {
-            if (id != typeModel.Id)
+            if (id != reviewModel.Id)
             {
                 return NotFound();
             }
@@ -100,21 +100,21 @@ namespace LaCroute
             {
                 try
                 {
-                    var existingType = await _context.Type.AsNoTracking().FirstOrDefaultAsync(t => t.Id == id);
+                    var existingReview = await _context.Review.AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
 
-                    if (existingType != null)
+                    if (existingReview != null)
                     {
-                        typeModel.Created_at = existingType.Created_at;
+                        reviewModel.created_at = existingReview.created_at;
                     }
 
-                    typeModel.Updated_at = DateTime.Now;
+                    reviewModel.updated_at = DateTime.Now;
 
-                    _context.Update(typeModel);
+                    _context.Update(reviewModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TypeModelExists(typeModel.Id))
+                    if (!ReviewModelExists(reviewModel.Id))
                     {
                         return NotFound();
                     }
@@ -125,10 +125,10 @@ namespace LaCroute
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeModel);
+            return View(reviewModel);
         }
 
-        // GET: AdminTypeModel/Delete/5
+        // GET: AdminReviewModel/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,34 +136,34 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type
+            var reviewModel = await _context.Review
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeModel == null)
+            if (reviewModel == null)
             {
                 return NotFound();
             }
 
-            return View(typeModel);
+            return View(reviewModel);
         }
 
-        // POST: AdminTypeModel/Delete/5
+        // POST: AdminReviewModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var typeModel = await _context.Type.FindAsync(id);
-            if (typeModel != null)
+            var reviewModel = await _context.Review.FindAsync(id);
+            if (reviewModel != null)
             {
-                _context.Type.Remove(typeModel);
+                _context.Review.Remove(reviewModel);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TypeModelExists(int id)
+        private bool ReviewModelExists(int id)
         {
-            return _context.Type.Any(e => e.Id == id);
+            return _context.Review.Any(e => e.Id == id);
         }
     }
 }

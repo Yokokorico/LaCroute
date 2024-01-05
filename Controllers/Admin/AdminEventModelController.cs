@@ -10,22 +10,22 @@ using LaCroute.Models;
 
 namespace LaCroute
 {
-    public class AdminTypeModelController : Controller
+    public class AdminEventModelController : Controller
     {
         private readonly LaCrouteContext _context;
 
-        public AdminTypeModelController(LaCrouteContext context)
+        public AdminEventModelController(LaCrouteContext context)
         {
             _context = context;
         }
 
-        // GET: AdminTypeModel
+        // GET: AdminEventModel
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Type.ToListAsync());
+            return View(await _context.Event.ToListAsync());
         }
 
-        // GET: AdminTypeModel/Details/5
+        // GET: AdminEventModel/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,42 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeModel == null)
+            var eventModel = await _context.Event
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (eventModel == null)
             {
                 return NotFound();
             }
 
-            return View(typeModel);
+            return View(eventModel);
         }
 
-        // GET: AdminTypeModel/Create
+        // GET: AdminEventModel/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AdminTypeModel/Create
+        // POST: AdminEventModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Created_at,Updated_at")] TypeModel typeModel)
+        public async Task<IActionResult> Create([Bind("id,title,description,thumbnail,date,created_at,updated_at")] EventModel eventModel)
         {
             if (ModelState.IsValid)
             {
-                typeModel.Created_at = DateTime.Now;
-                typeModel.Updated_at = DateTime.Now;
+                eventModel.created_at = DateTime.Now;
+                eventModel.updated_at = DateTime.Now;
 
-                _context.Add(typeModel);
+                _context.Add(eventModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeModel);
+            return View(eventModel);
         }
 
-        // GET: AdminTypeModel/Edit/5
+        // GET: AdminEventModel/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,22 +76,22 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type.FindAsync(id);
-            if (typeModel == null)
+            var eventModel = await _context.Event.FindAsync(id);
+            if (eventModel == null)
             {
                 return NotFound();
             }
-            return View(typeModel);
+            return View(eventModel);
         }
 
-        // POST: AdminTypeModel/Edit/5
+        // POST: AdminEventModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Created_at,Updated_at")] TypeModel typeModel)
+        public async Task<IActionResult> Edit(int id, [Bind("id,title,description,thumbnail,date,created_at,updated_at")] EventModel eventModel)
         {
-            if (id != typeModel.Id)
+            if (id != eventModel.id)
             {
                 return NotFound();
             }
@@ -100,21 +100,21 @@ namespace LaCroute
             {
                 try
                 {
-                    var existingType = await _context.Type.AsNoTracking().FirstOrDefaultAsync(t => t.Id == id);
+                    var existingEvent = await _context.Event.AsNoTracking().FirstOrDefaultAsync(e => e.id == id);
 
-                    if (existingType != null)
+                    if (existingEvent != null)
                     {
-                        typeModel.Created_at = existingType.Created_at;
+                        eventModel.created_at = existingEvent.created_at;
                     }
 
-                    typeModel.Updated_at = DateTime.Now;
-
-                    _context.Update(typeModel);
+                    eventModel.updated_at = DateTime.Now;
+                    
+                    _context.Update(eventModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TypeModelExists(typeModel.Id))
+                    if (!EventModelExists(eventModel.id))
                     {
                         return NotFound();
                     }
@@ -125,10 +125,10 @@ namespace LaCroute
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeModel);
+            return View(eventModel);
         }
 
-        // GET: AdminTypeModel/Delete/5
+        // GET: AdminEventModel/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,34 +136,34 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var typeModel = await _context.Type
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeModel == null)
+            var eventModel = await _context.Event
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (eventModel == null)
             {
                 return NotFound();
             }
 
-            return View(typeModel);
+            return View(eventModel);
         }
 
-        // POST: AdminTypeModel/Delete/5
+        // POST: AdminEventModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var typeModel = await _context.Type.FindAsync(id);
-            if (typeModel != null)
+            var eventModel = await _context.Event.FindAsync(id);
+            if (eventModel != null)
             {
-                _context.Type.Remove(typeModel);
+                _context.Event.Remove(eventModel);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TypeModelExists(int id)
+        private bool EventModelExists(int id)
         {
-            return _context.Type.Any(e => e.Id == id);
+            return _context.Event.Any(e => e.id == id);
         }
     }
 }

@@ -1,4 +1,4 @@
-@model IEnumerable<LaCroute.Models.ProductModel>
+@model IEnumerable<LaCroute.Models.EventModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,11 +7,12 @@
 <div class="container">
     <div class="text-center">
 
-        <h1>Produits</h1>
+        <h1>Evènements</h1>
 
         <p>
-            <a asp-action="Create" class="btn btn-admin">Ajouter un produit</a>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un évènement</a>
         </p>
+
         <table class="table">
             <thead>
                 <tr>
@@ -22,10 +23,10 @@
                         Description
                     </th>
                     <th>
-                        Prix
-                    </th>
-                    <th class="col-photo">
                         Photo
+                    </th>
+                    <th>
+                        Date
                     </th>
                     <th>
                         Date de création
@@ -41,27 +42,27 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Title)
+                            @Html.DisplayFor(modelItem => item.title)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
+                            @Html.DisplayFor(modelItem => item.description)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td class="text-truncate" style="max-width: 150px;">
-                            @Html.DisplayFor(modelItem => item.Thumbnail)
+                            @Html.DisplayFor(modelItem => item.thumbnail)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Created_at)
+                            @Html.DisplayFor(modelItem => item.date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Updated_at)
+                            @Html.DisplayFor(modelItem => item.created_at)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
+                            @Html.DisplayFor(modelItem => item.updated_at)
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin mb-2">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>
                 }

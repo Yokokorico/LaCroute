@@ -1,4 +1,4 @@
-@model LaCroute.Models.ProductModel
+@model LaCroute.Models.ReviewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,7 +7,7 @@
 <div class="container">
     <div class="text-center">
 
-        <h1>Editer le produit</h1>
+        <h1>Editer l'avis</h1>
 
         <hr />
         <div class="row">
@@ -16,7 +16,12 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
                     <div class="form-group">
-                        <label asp-for="Title" class="control-label">Intitulé</label>
+                        <label asp-for="Name" class="control-label">Nom</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label">Titre</label>
                         <input asp-for="Title" class="form-control" />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
@@ -26,14 +31,9 @@
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Price" class="control-label">Prix</label>
-                        <input asp-for="Price" class="form-control" type="number" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Thumbnail" class="control-label">Photo</label>
-                        <input asp-for="Thumbnail" class="form-control" />
-                        <span asp-validation-for="Thumbnail" class="text-danger"></span>
+                        <label asp-for="Rating" class="control-label">Evaluation</label>
+                        <input asp-for="Rating" class="form-control" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Enregistrer" class="btn btn-admin m-2" />
@@ -43,7 +43,7 @@
         </div>
 
         <div>
-            <a asp-action="Index" class="btn btn-admin m-2"class="btn btn-admin m-2">Retour</a>
+            <a asp-action="Index" class="btn btn-admin m-2">Retour</a>
         </div>
     </div>
 </div>

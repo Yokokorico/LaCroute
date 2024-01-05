@@ -1,4 +1,4 @@
-@model IEnumerable<LaCroute.Models.TypeModel>
+@model IEnumerable<LaCroute.Models.ReviewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,17 +7,26 @@
 <div class="container">
     <div class="text-center">
 
-        <h1>Types</h1>
+        <h1>Avis</h1>
 
         <p>
-            <a asp-action="Create" class="btn btn-admin">Ajouter un type</a>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un avis</a>
         </p>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Intitulé
+                        Nom
+                    </th>
+                    <th>
+                        Titre
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Evaluation
                     </th>
                     <th>
                         Date de création
@@ -33,18 +42,27 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Created_at)
+                            @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Updated_at)
+                            @Html.DisplayFor(modelItem => item.Rating)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.updated_at)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin mb-2">Supprimer</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>
                 }
