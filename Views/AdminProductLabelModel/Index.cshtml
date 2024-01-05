@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
@@ -17,13 +18,7 @@
             <thead>
                 <tr>
                     <th>
-                        Id du produit
-                    </th>
-                    <th>
                         Produit
-                    </th>
-                    <th>
-                        Id du label
                     </th>
                     <th>
                         Label
@@ -36,20 +31,14 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Product.Id)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Product.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Label.Id)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Label.Title)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>

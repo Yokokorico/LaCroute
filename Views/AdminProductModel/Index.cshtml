@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
@@ -18,21 +19,6 @@
                     <th>
                         Intitulé
                     </th>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Prix
-                    </th>
-                    <th class="col-photo">
-                        Photo
-                    </th>
-                    <th>
-                        Date de création
-                    </th>
-                    <th>
-                        Date de mise à jour
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,23 +30,8 @@
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td class="text-truncate" style="max-width: 150px;">
-                            @Html.DisplayFor(modelItem => item.Thumbnail)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Created_at)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Updated_at)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>

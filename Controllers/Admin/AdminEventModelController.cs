@@ -7,18 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
+
 
 namespace LaCroute
 {
+    [Route("admin/events")]
     public class AdminEventModelController : Controller
     {
+
         private readonly LaCrouteContext _context;
+    
 
         public AdminEventModelController(LaCrouteContext context)
         {
             _context = context;
         }
 
+        //   [Route("/")]
         // GET: AdminEventModel
         public async Task<IActionResult> Index()
         {
@@ -26,6 +32,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Details/5
+        [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +51,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Create
+        [Route("create")]
         public IActionResult Create()
         {
             return View();
@@ -69,6 +77,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Edit/5
+        [Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -108,7 +117,7 @@ namespace LaCroute
                     }
 
                     eventModel.updated_at = DateTime.Now;
-                    
+
                     _context.Update(eventModel);
                     await _context.SaveChangesAsync();
                 }
@@ -129,6 +138,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Delete/5
+        [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

@@ -10,6 +10,7 @@ using LaCroute.Models;
 
 namespace LaCroute
 {
+    [Route("admin/labels")]
     public class AdminLabelModelController : Controller
     {
         private readonly LaCrouteContext _context;
@@ -26,6 +27,7 @@ namespace LaCroute
         }
 
         // GET: AdminLabelModel/Details/5
+        [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace LaCroute
         }
 
         // GET: AdminLabelModel/Create
+        [Route("create")]
         public IActionResult Create()
         {
             return View();
@@ -69,6 +72,7 @@ namespace LaCroute
         }
 
         // GET: AdminLabelModel/Edit/5
+        [Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -129,6 +133,7 @@ namespace LaCroute
         }
 
         // GET: AdminLabelModel/Delete/5
+        [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
