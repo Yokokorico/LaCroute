@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
@@ -23,16 +24,7 @@
                         Titre
                     </th>
                     <th>
-                        Description
-                    </th>
-                    <th>
                         Evaluation
-                    </th>
-                    <th>
-                        Date de création
-                    </th>
-                    <th>
-                        Date de mise à jour
                     </th>
                     <th></th>
                 </tr>
@@ -48,20 +40,11 @@
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Rating)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.created_at)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.updated_at)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>

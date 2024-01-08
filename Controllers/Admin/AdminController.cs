@@ -8,21 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
 
-namespace LaCroute
+namespace LaCroute;
+
+[Route("admin")]
+public class AdminController : Controller
 {
-    public class AdminController : Controller
+    public IActionResult Index()
     {
-        private readonly LaCrouteContext _context;
-
-            public AdminController(LaCrouteContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IActionResult> Index() 
-        {
-            return View();
-        }
+        return View();
     }
 }
-
