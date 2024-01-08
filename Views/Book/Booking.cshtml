@@ -1,76 +1,82 @@
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-<script src='fullcalendar/dist/index.global.js'></script>
-<script src='fullcalendar/core/locales-all.global.js'></script>
-<script>
+@model LaCroute.Models.Book
+@if (TempData["SuccessMessage"] != null)
+{
+    <p>@TempData["SuccessMessage"]</p>
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'listMonth',
-        contentHeight: 'auto',
-        locale: 'fr',
-        views: {
-            listDay: { buttonText: 'list day' },
-            listWeek: { buttonText: 'list week' },
-            listMonth: { buttonText: 'list month' }
-        },
-        themeSystem: 'bootstrap5',
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'listMonth,listWeek,listDay'
-        },
-        dateClick: function(info) {
-            alert('Date: ' + info.title);
-            alert('\n Start: ' + info.start);
-            alert('\n End: ' + info.end);
-        },
-        events: [
-            {
-                title  : 'Madama Pavochko',
-                start  : '2024-01-02T14:30:00',
-                end  : '2024-01-02T16:30:00'
-            },
-            {
-                title  : 'Le Cuistot JB',
-                start  : '2024-01-02T11:30:00',
-                end  : '2024-01-02T13:30:00'
-            },
-            {
-                title  : 'KODJA affamé',
-                start  : '2024-01-03T12:30:00',
-                end  : '2024-01-03T14:30:00'
-            },{
-                title  : 'Madama',
-                start  : '2024-01-04T14:30:00',
-                end  : '2024-01-04T16:30:00'
-            },
-            {
-                title  : 'JB',
-                start  : '2024-01-08T11:30:00',
-                end  : '2024-01-08T13:30:00'
-            },
-            {
-                title  : 'affamé',
-                start  : '2024-01-05T12:30:00',
-                end  : '2024-01-05T14:30:00'
-            },
-            {
-                title  : '',
-                start  : '2024-01-05T14:30:00',
-                end  : '2024-01-05T16:30:00'
-            }
-        ],
-        
-    });
-    calendar.render();
-});
+<div class="container d-flex justify-content-center">
+    <div class="row">
+        <div class="col-12 col-md6">
+            <form asp-action="Booking" method="post" class="">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><label asp-for="date">Sélectionnez une date
+                        </label></span>
+                    <input type="date" asp-for="date" class="form-control" placeholder="JJ/MM/AAAA"
+                        min='@DateTime.Now.ToString("yyyy-MM-dd")' />
+                    <span asp-validation-for="date" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" id="btnradio1"  class="btn-check" asp-for="time" value="11:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio1"> 11h-12h</label>
+
+                        <input type="radio" id="btnradio2" class="btn-check" asp-for="time" value="12:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio2">12h-13h</label>
+
+                        <input type="radio" id="btnradio3" class="btn-check" asp-for="time" value="13:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio3">13h-14h</label>
+                    </div>
+
+                    <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" id="btnradio4" class="btn-check" asp-for="time" value="18:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio4"> 18h-19h</label>
+
+                        <input type="radio" id="btnradio5"class="btn-check" asp-for="time" value="19:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio5">19h-20h</label>
+
+                        <input type="radio" id="btnradio6" class="btn-check" asp-for="time" value="20:00:00"
+                            autocomplete="off" />
+                        <label class="btn btn-outline-primary" for="btnradio6">20h-21h</label>
+
+                    </div>
+                    <span asp-validation-for="time" class="text-danger"></span>
+                </div>
 
 
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><label for="name">Nom</label></span>
+                    <input type="text" class="form-control" placeholder="Nom" aria-label="name"
+                        aria-describedby="basic-addon1" asp-for="name">
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
 
-</script>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><label for="">Numéro de téléphone</label></span>
+                    <input type="text" class="form-control" placeholder="Numéro de téléphone" aria-label="phoneNumber"
+                        aria-describedby="basic-addon1" asp-for="phoneNumber">
+                    <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                </div>
 
-<div class="container">
-    <div id='calendar'></div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><label for="seats">Nombre de
+                            personne</label></span>
+                    <input type="text" class="form-control" placeholder="Nombre de personne" aria-label="seats"
+                        aria-describedby="basic-addon1" asp-for="seats">
+                    <span asp-validation-for="seats" class="text-danger"></span>
+                </div>
+
+
+
+                <button type="submit">Envoyer</button>
+
+            </form>
+        </div>
+    </div>
+
 </div>
-

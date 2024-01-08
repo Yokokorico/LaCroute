@@ -11,6 +11,11 @@
             navbarBurgerContent.classList.remove('show-navbar-burger-content');
         }
     </script>
+
+
+
+
+
     <nav class="navbar-header">
         <div class="navbar-header-left">
             <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="about-us">La patésserie</a>
@@ -18,8 +23,8 @@
             <a class="navbar-header-link" asp-area="" asp-controller="Menu" asp-action="index">Menu</a>
         </div>
 
-        <a asp-area="" asp-controller="Home" asp-action="index">
-            <img src="~/img/lacroute-blanc.webp" class="img-fluid ml-lg-0 ml-3"
+        <a asp-area="" asp-controller="Home" asp-action="index" class="ml-10">
+            <img src="~/img/lacroute-blanc.webp" class="img-fluid "
                 style="max-width: 11rem; padding-block: 1rem; margin-inline: 1rem;">
         </a>
 
@@ -29,6 +34,9 @@
             <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="events">Les évènements</a>
             <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="contact">Contact</a>
         </div>
+        <partial class="connect-button" name="_LoginPartial" />
+
+
 
         <div class="navbar-burger-toggle">
             <button class="navbar-burger" onclick="toggleBurgerMenu()">&#9776;</button>
