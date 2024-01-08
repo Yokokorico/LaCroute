@@ -1,0 +1,61 @@
+@model LaCroute.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Supprimer le produit</h1>
+
+        <h2>Etes-vous sur de vouloir supprimer ce produit ?</h2>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Intitulé
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    Description
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    Prix
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    Photo
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Thumbnail)
+                </dd>
+                <dt class="col-sm-2">
+                    Date de création
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Created_at)
+                </dd>
+                <dt class="col-sm-2">
+                    Date de mise à jour
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Updated_at)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Supprimer" class="btn btn-admin" />
+                <a asp-action="Index" class="btn btn-admin">Retour</a>
+            </form>
+        </div>
+    </div>
+</div>

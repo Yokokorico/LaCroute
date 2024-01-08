@@ -1,0 +1,58 @@
+@model IEnumerable<LaCroute.Models.ProductLabelModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Relations Produit/Label</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-admin">Créer une nouvelle relation</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Id du produit
+                    </th>
+                    <th>
+                        Produit
+                    </th>
+                    <th>
+                        Id du label
+                    </th>
+                    <th>
+                        Label
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Label.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Label.Title)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>

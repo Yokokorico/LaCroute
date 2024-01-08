@@ -1,9 +1,11 @@
 using System.Security.Cryptography.X509Certificates;
 using LaCroute.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 namespace LaCroute.Data
 {
-  public class LaCrouteContext : DbContext
+  public class LaCrouteContext : IdentityDbContext
   {
     public LaCrouteContext(DbContextOptions<LaCrouteContext> options) :
     base(options)
@@ -24,5 +26,6 @@ namespace LaCroute.Data
     public DbSet<ServiceModel> Service {get; set;} = default!;
     public DbSet<AvailabiltyModel> Availabilties {get; set;} = default!;
     public DbSet<Book> Books { get; set; } = default!;
+    public DbSet<AdminModel> Admin { get; set; } = default!;
   }
 }

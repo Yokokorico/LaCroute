@@ -1,0 +1,54 @@
+@model IEnumerable<LaCroute.Models.TypeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Types</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un type</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Intitulé
+                    </th>
+                    <th>
+                        Date de création
+                    </th>
+                    <th>
+                        Date de mise à jour
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated_at)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin mb-2">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin mb-2">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

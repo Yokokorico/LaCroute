@@ -2,6 +2,7 @@ using System.Diagnostics;
 using LaCroute.Data;
 using LaCroute.Models;
 using LaCroute.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

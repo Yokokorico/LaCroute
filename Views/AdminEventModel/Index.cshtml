@@ -1,0 +1,72 @@
+@model IEnumerable<LaCroute.Models.EventModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Evènements</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un évènement</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Intitulé
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Photo
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Date de création
+                    </th>
+                    <th>
+                        Date de mise à jour
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.thumbnail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.created_at)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.updated_at)
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin mb-2">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin mb-2">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
