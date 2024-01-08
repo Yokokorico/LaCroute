@@ -9,7 +9,12 @@ public class Book{
     [DataType(DataType.Time)]
     public TimeSpan time {get; set;}
     public string name {get; set;}
+    [Phone(ErrorMessage ="Merci de renseigner un numéro de téléphone valide")]
     public string phoneNumber {get; set;}
+    [Range(1,6,ErrorMessage = "Merci de mettre entre 1 et 6 places")]
     public int seats{get; set;}
+
+    public DateTime created_at {get; set;} = DateTime.Now;
+    public DateTime updated_at {get; set;} = DateTime.Now;
 }
 
