@@ -9,7 +9,7 @@ public class EventModel{
     public string title {get; set;}
     public string description {get; set;}
     public string thumbnail {get; set;}
-    public DateTime date {get; set;}
+    public DateOnly date {get; set;}
     public DateTime created_at {get; set;}
     public DateTime updated_at {get; set;}
 }
