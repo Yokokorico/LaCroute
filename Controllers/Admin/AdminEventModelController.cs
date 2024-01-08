@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LaCroute
 {
-    [Route("admin/events")]
+    // [Route("admin/events")]
     public class AdminEventModelController : Controller
     {
 
@@ -32,7 +32,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Details/5
-        [Route("details/{id}")]
+        // [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -51,7 +51,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Create
-        [Route("create")]
+        // [Route("create")]
         public IActionResult Create()
         {
             return View();
@@ -77,7 +77,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Edit/5
-        [Route("edit/{id}")]
+        // [Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -138,7 +138,7 @@ namespace LaCroute
         }
 
         // GET: AdminEventModel/Delete/5
-        [Route("delete/{id}")]
+        // [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

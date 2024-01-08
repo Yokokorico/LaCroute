@@ -10,7 +10,7 @@ using LaCroute.Models;
 
 namespace LaCroute
 {
-    [Route("admin/types")]
+    // [Route("admin/types")]
     public class AdminTypeModelController : Controller
     {
         private readonly LaCrouteContext _context;
@@ -46,7 +46,7 @@ namespace LaCroute
         }
 
         // GET: AdminTypeModel/Create
-        [Route("create")]
+        // [Route("create")]
         public IActionResult Create()
         {
             return View();
@@ -72,7 +72,7 @@ namespace LaCroute
         }
 
         // GET: AdminTypeModel/Edit/5
-        [Route("edit/{id}")]
+        // [Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -133,7 +133,7 @@ namespace LaCroute
         }
 
         // GET: AdminTypeModel/Delete/5
-        [Route("delete/{id}")]
+        // [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
