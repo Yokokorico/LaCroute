@@ -63,6 +63,7 @@
         aspect-ratio: 1;
         border-radius: 10px;
         background: var(--pistache);
+        margin-right: 2rem ;
         border: 0;
     }
 
