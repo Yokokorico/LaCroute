@@ -77,3 +77,21 @@ a:hover {
     font-weight: 600;
     font-size: 14px;
 }
+
+svg {
+    width: 100%;
+}
+
+.linkcontainer {
+    display: flex;
+    justify-content: end;
+}
+
+.link {
+    color: var(--terrine);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'VT323';
+    letter-spacing: 2px;
+}
