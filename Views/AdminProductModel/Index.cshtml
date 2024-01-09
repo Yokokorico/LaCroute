@@ -19,6 +19,9 @@
                     <th>
                         Intitulé
                     </th>
+                    <th>
+                        Au menu
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,8 +33,11 @@
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.IsAvailable)
+                        </td>
+                        <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détails</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>
