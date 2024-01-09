@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LaCroute;
 
+[Authorize]
 [Route("admin")]
 public class AdminController : Controller
 {
@@ -17,4 +19,6 @@ public class AdminController : Controller
     {
         return View();
     }
+
+    
 }

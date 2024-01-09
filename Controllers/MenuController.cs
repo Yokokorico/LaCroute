@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LaCroute.Controllers
 {
-    [Authorize]
+
     public class MenuController : Controller
     {
         private readonly ILogger<MenuController> _logger;

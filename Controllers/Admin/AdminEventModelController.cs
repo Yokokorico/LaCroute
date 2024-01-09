@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace LaCroute
 {
+    [Authorize]
     // [Route("admin/events")]
     public class AdminEventModelController : Controller
     {

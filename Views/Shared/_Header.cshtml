@@ -10,6 +10,30 @@
             const navbarBurgerContent = document.querySelector('.navbar-burger-content');
             navbarBurgerContent.classList.remove('show-navbar-burger-content');
         }
+
+        function scrollToAnchor(event, targetId) {
+            event.preventDefault();
+
+            const currentPage = window.location.pathname;
+
+            if (currentPage !== '/') {
+                window.location.href = '/' + targetId;
+            } else {
+
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const offset = 200;
+                    const targetPosition = targetElement.offsetTop - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+            }
+        }
     </script>
 
 
@@ -18,8 +42,9 @@
 
     <nav class="navbar-header">
         <div class="navbar-header-left">
-            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="index" asp-route-fragment="concept">La patésserie</a>
-            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="team">L'équipe</a>
+            <a class="navbar-header-link" href="/#concept" onclick="scrollToAnchor(event, '#concept')">La
+                patésserie</a>
+            <a class="navbar-header-link" href="/#equipe" onclick="scrollToAnchor(event, '#equipe')">L'équipe</a>
             <a class="navbar-header-link" asp-area="" asp-controller="Menu" asp-action="index">Menu</a>
         </div>
 
@@ -31,8 +56,8 @@
 
         <div class="navbar-header-right">
             <a class="navbar-header-link" asp-area="" asp-controller="Book" asp-action="booking">Réserver</a>
-            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="events">Les évènements</a>
-            <a class="navbar-header-link" asp-area="" asp-controller="Home" asp-action="contact">Contact</a>
+            <a class="navbar-header-link" href="/#events" onclick="scrollToAnchor(event, '#events')">Les évènements</a>
+            <a class="navbar-header-link" href="#footer" onclick="scrollToAnchor(event, '#footer')">Contact</a>
         </div>
         <partial class="connect-button" name="_LoginPartial" />
 
@@ -41,20 +66,20 @@
         <div class="navbar-burger-toggle">
             <button class="navbar-burger" onclick="toggleBurgerMenu()">&#9776;</button>
             <ul class="navbar-burger-content">
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="about-us"
-                        onclick="closeBurgerMenu()">La
+                <li class="navbar-burger-item"><a href="/#concept"
+                        onclick="closeBurgerMenu(); scrollToAnchor(event, '#concept')">La
                         patésserie</a></li>
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="team"
-                        onclick="closeBurgerMenu()">L'équipe</a></li>
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Menu" asp-action="menu"
+                <li class="navbar-burger-item"><a href="/#equipe"
+                        onclick="closeBurgerMenu(); scrollToAnchor(event, '#equipe')">L'équipe</a></li>
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Menu" asp-action="index"
                         onclick="closeBurgerMenu()">Menu</a></li>
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="book"
+                <li class="navbar-burger-item"><a asp-area="" asp-controller="Book" asp-action="booking"
                         onclick="closeBurgerMenu()">Réserver</a></li>
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="events"
-                        onclick="closeBurgerMenu()">Les
+                <li class="navbar-burger-item"><a href="/#events"
+                        onclick=" closeBurgerMenu(); scrollToAnchor(event, '#events')">Les
                         évènements</a></li>
-                <li class="navbar-burger-item"><a asp-area="" asp-controller="Home" asp-action="contact"
-                        onclick="closeBurgerMenu()">Contact</a>
+                <li class="navbar-burger-item"><a href="#footer"
+                        onclick="closeBurgerMenu(); scrollToAnchor(event, '#footer')">Nous trouver</a>
                 </li>
             </ul>
         </div>
