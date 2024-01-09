@@ -26,7 +26,7 @@ namespace LaCroute.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Review([Bind("Name,Rating,Description")] ReviewModel review)
+        public async Task<IActionResult> Review([Bind("Name,Title,Rating,Description")] ReviewModel review)
         {
             if (ModelState.IsValid)
             {
