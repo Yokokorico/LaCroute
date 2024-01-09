@@ -9,6 +9,7 @@
     background: var(--terrine);
     gap: 3rem;
     border-bottom: 10px solid var(--pistache);
+    margin-bottom: 44rem;
 
 }
 
@@ -35,6 +36,10 @@
     display: none;
 }
 
+.connect-button {
+    float: right;
+}
+
 @media screen and (max-width: 1000px) {
     .navbar-header-left {
         display: none;
@@ -58,6 +63,7 @@
         aspect-ratio: 1;
         border-radius: 10px;
         background: var(--pistache);
+        margin-right: 2rem ;
         border: 0;
     }
 

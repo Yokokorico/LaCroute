@@ -1,0 +1,49 @@
+@model IEnumerable<LaCroute.Models.EventModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Evènements</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un évènement</a>
+        </p>
+
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>
+                        Intitulé
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="p-2">
+                            @Html.DisplayFor(modelItem => item.title)
+                        </td>
+                        <td class="p-2">
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td class="p-2">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

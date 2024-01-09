@@ -3,10 +3,13 @@ using LaCroute.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
+using Microsoft.AspNetCore.Authorization;
+
 
 
 namespace LaCroute.Controllers
 {
+    [Authorize]
     public class MenuController : Controller
     {
         private readonly ILogger<MenuController> _logger;

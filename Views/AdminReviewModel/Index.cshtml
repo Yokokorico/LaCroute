@@ -1,0 +1,55 @@
+@model IEnumerable<LaCroute.Models.ReviewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <h1>Avis</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-admin">Ajouter un avis</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Titre
+                    </th>
+                    <th>
+                        Evaluation
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rating)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

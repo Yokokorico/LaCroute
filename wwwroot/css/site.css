@@ -6,15 +6,20 @@
 }
 
 .container {
+
   padding: 0 !important;
 }
 
 :root {
-    --couenne: #ffe5dd;
-    --rillettes: #ffc7bf;
+    --couenne: rgb(255, 229, 221);
+    --rillettes: rgb(255, 199, 191);
     --terrine: #74463f;
     --pistache: #dde2c8;
     --cacahuete: #d06a4e;
+}
+
+.bg-couenne {
+    background-color: var(--couenne);
 }
 
     html {
@@ -48,8 +53,6 @@ h2 {
     font-family: 'VT323';
 }
 
-
-
 .navbar-header-link {
   color: white;
   font-size: 1.5rem;
@@ -69,3 +72,16 @@ h2 {
 .navbar-burger-content a:hover {
   font-weight: bold;
 }
+
+.pb-3 {
+  padding-bottom: 0 !important;
+}
+
+.btn-admin {
+  background-color: var(--cacahuete);
+  padding: 0.3rem 1rem;
+  color: var(--couenne);
+  font-weight: 600;
+  font-size: 14px;
+}
+
