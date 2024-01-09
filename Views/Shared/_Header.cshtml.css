@@ -40,6 +40,10 @@
     float: right;
 }
 
+.navbar-header-link:hover {
+    color: var(--rillettes);
+}
+
 @media screen and (max-width: 1000px) {
     .navbar-header-left {
         display: none;

@@ -4,48 +4,57 @@
     ViewData["Title"] = "Delete";
     Layout = "_LayoutAdmin";
 }
-
 <div class="container">
     <div class="text-center">
 
+        <div class="linkcontainer">
+            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+        </div>
+
         <h1>Supprimer le produit</h1>
 
-        <h2>Etes-vous sur de vouloir supprimer ce produit ?</h2>
+        <h2>Etes-vous sur de vouloir supprimer cette relation ?</h2>
         <div>
             <hr />
             <dl class="row">
                 <dt class="col-sm-2">
-                    Intitulé
+                    @Html.DisplayNameFor(model => model.Title)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Title)
                 </dd>
                 <dt class="col-sm-2">
-                    Description
+                    @Html.DisplayNameFor(model => model.Description)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Description)
                 </dd>
                 <dt class="col-sm-2">
-                    Prix
+                    @Html.DisplayNameFor(model => model.Price)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Price)
                 </dd>
                 <dt class="col-sm-2">
-                    Photo
+                    @Html.DisplayNameFor(model => model.Thumbnail)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Thumbnail)
                 </dd>
                 <dt class="col-sm-2">
-                    Date de création
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsAvailable)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Created_at)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Created_at)
                 </dd>
                 <dt class="col-sm-2">
-                    Date de mise à jour
+                    @Html.DisplayNameFor(model => model.Updated_at)
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Updated_at)

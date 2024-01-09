@@ -11,6 +11,7 @@ public class ProductModel
     public string? Description { get; set; }
     public double Price { get; set; }
     public string? Thumbnail { get; set; }
+    public bool IsAvailable { get; set; }
     public TypeModel? Type { get; set; }
     public ICollection<ProductLabelModel>? ProductLabel { get; set; }
     public DateTime Created_at { get; set; } = DateTime.Now;
