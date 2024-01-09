@@ -10,7 +10,6 @@ using LaCroute.Models;
 
 namespace LaCroute
 {
-    // [Route("admin/products")]
     public class AdminProductModelController : Controller
     {
         private readonly LaCrouteContext _context;
@@ -27,7 +26,6 @@ namespace LaCroute
         }
 
         // GET: AdminProductModel/Details/5
-        // [Route("details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,7 +44,6 @@ namespace LaCroute
         }
 
         // GET: AdminProductModel/Create
-        // [Route("create")]
         public IActionResult Create()
         {
             return View();
@@ -57,13 +54,10 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
         {
             if (ModelState.IsValid)
             {
-                productModel.Created_at = DateTime.Now;
-                productModel.Updated_at = DateTime.Now;
-
                 _context.Add(productModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -72,7 +66,6 @@ namespace LaCroute
         }
 
         // GET: AdminProductModel/Edit/5
-        // [Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,7 +86,7 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,Thumbnail,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
         {
             if (id != productModel.Id)
             {
@@ -104,14 +97,6 @@ namespace LaCroute
             {
                 try
                 {
-                    var existingProduct = await _context.Product.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
-
-                    if (existingProduct != null)
-                    {
-                        productModel.Created_at = existingProduct.Created_at;
-                    }
-
-                    productModel.Updated_at = DateTime.Now;
                     _context.Update(productModel);
                     await _context.SaveChangesAsync();
                 }
@@ -132,7 +117,6 @@ namespace LaCroute
         }
 
         // GET: AdminProductModel/Delete/5
-        // [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,7 +135,7 @@ namespace LaCroute
         }
 
         // POST: AdminProductModel/Delete/5
-        // [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
