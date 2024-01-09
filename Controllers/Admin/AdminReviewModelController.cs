@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LaCroute
 {
+    [Authorize]
     // [Route("admin/reviews")]
     public class AdminReviewModelController : Controller
     {
