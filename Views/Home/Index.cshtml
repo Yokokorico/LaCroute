@@ -3,7 +3,6 @@
     ViewData["Title"] = "La Croûte";
 }
 
-<partial name="_Concept.cshtml"></partial>
+<partial id="concept" name="_Concept.cshtml"></partial>
 <partial name="_Team.cshtml"></partial>
 @await Html.PartialAsync("_Event", Model.Events)
-
