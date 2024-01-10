@@ -4,3 +4,36 @@
     padding-right: 2rem;
     padding-left: 2rem;
 }
+
+.border-pistache{
+    border-color: var(--pistache) !important;
+}
+.bg-terrine{
+    background-color: var(--terrine) !important;
+}
+
+.btn-outline-cacahuete{
+    color: var(--pistache);
+    border-color:var(--pistache);
+}
+
+.btn-outline-cacahuete:hover{
+    color: var(--terrine);
+    border-color:var(--pistache);
+    background-color: var(--pistache);
+}
+
+.bg-pistache{
+    background-color: var(--pistache)!important;
+}
+
+.btn-pistache{
+    background-color: var(--pistache)!important;
+    color: var(--terrine)!important;
+}
+input[type="radio"]:checked + label{
+    background-color: var(--pistache);
+    color: var(--terrine);
+    box-shadow: none;
+}
+
