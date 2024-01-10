@@ -37,6 +37,10 @@
     color: orange; 
 }
 
+.btn-pistache{
+    background-color: var(--pistache);
+}
+
 @media screen and (max-width: 1450px) {
     .Review-Carousel {
         width: 80%;

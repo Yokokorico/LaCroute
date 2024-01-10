@@ -34,14 +34,14 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center pb-5">
-        <div class="col-6 col-md-6 bg-terrine border border-color">
+        <div class="col-6 col-md-6 bg-terrine border border-color rounded">
             <form asp-action="Review" method="post" class="p-5 ">
-                <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center bg-">
                     <h2 class="text-center">Donnez votre avis!</h2>
                 </div>
                 <div class="pt-5 pb-5">
                     <div class="input-group mb-3 col-md-6">
-                        <span class="input-group-text" id="basic-addon1">Nom</span>
+                        <span class="input-group-text" id="basic-addon1">Prénom</span>
                         <input type="text" id="Name" name="Name" id="Name" asp-for="Name" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="input-group mb-3 col-md-6">
                             <span class="input-group-text" id="basic-addon1">Note</span>
                             <span asp-validation-for="Rating" class="text-danger"></span>
-                            <div id="rating-container" class="bg-white border border-secondary p-rating" >
+                            <div id="rating-container" class="bg-white border border-secondary2 p-rating" >
                                 @for (int i = 1; i <= 5; i++)
                                 {
                                     <span class="star" data-value="@i">&#9733;</span>

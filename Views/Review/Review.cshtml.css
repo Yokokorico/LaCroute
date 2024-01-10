@@ -37,3 +37,6 @@ h2{
     background-color: var(--pistache);
 }
 
+.border-secondary2{
+    border-color: rgb(129, 41, 41);
+}
