@@ -4,13 +4,16 @@
     margin: 0;
     background-color: var(--couenne);
     max-width: none;
-}
-p{
-    width: 60%;
+    display: flex;
+    flex-direction: row;
 }
 
-@media screen and (max-width: 500px) { 
-    p{
-        width: 100%;
-    }
+.concept-image img {
+    max-width: 10rem !important;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    object-fit: cover; 
 }
+
+
