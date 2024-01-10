@@ -1,0 +1,42 @@
+.h-description{
+    height: 200px !important;
+}
+.p-rating{
+    padding-right: 1.1rem !important;
+    padding-left: 1.1rem !important;
+}
+#rating-container {
+    font-size: 24px;
+    box-shadow: 0px 0px 1px 1px lightgray;
+    border: 0.1rem;
+}
+
+.star {
+    cursor: pointer;
+    display: inline-block; 
+    color: gray;
+}
+
+.selected, .hover {
+    color: gold;
+}
+
+.bg-terrine{
+    background-color: var(--terrine);
+}
+
+.border-color{
+    border-color: var(--pistache) !important;
+}
+
+h2{
+    color: var(--pistache) !important;
+}
+
+.btn-pistache{
+    background-color: var(--pistache);
+}
+
+.border-secondary2{
+    border-color: rgb(129, 41, 41);
+}

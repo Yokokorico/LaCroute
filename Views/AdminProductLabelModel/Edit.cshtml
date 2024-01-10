@@ -1,0 +1,51 @@
+@model LaCroute.Models.ProductLabelModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <div class="linkcontainer">
+            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+        </div>
+
+        <h1>Editer la relation Produit/Label</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="ProductId" class="control-label">Id du produit</label>
+                        <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LabelId" class="control-label">Id du Label</label>
+                        <select asp-for="LabelId" class="form-control" asp-items="ViewBag.LabelId"></select>
+                        <span asp-validation-for="LabelId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Enregistrer" class="btn btn-admin m-2" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index" class="btn btn-admin m-2">Retour</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

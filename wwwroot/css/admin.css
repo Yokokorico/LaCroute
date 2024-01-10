@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400&family=Pirata+One&family=VT323&display=swap');
+
+:root {
+    --couenne: rgb(255, 229, 221);
+    --rillettes: rgb(255, 199, 191);
+    --terrine: #74463f;
+    --pistache: #dde2c8;
+    --cacahuete: #d06a4e;
+}
+
+* {
+    color: var(--cacahuete);
+}
+
+body {
+    background-color: var(--couenne);
+}
+
+h3 {
+    font-size: 0.75rem;
+    font-family: 'VT323';
+    margin-left: 0.5rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Chakra Petch';
+}
+
+li {
+    list-style-type: none;
+    font-size: 14px;
+    transition: font-size 2s ease;
+    background-color: var(--cacahuete);
+    width: fit-content;
+    color: var(--couenne);
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 8px var(--cacahuete);
+}
+
+h1 {
+    font-family: 'Pirata One';
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    text-shadow: 10px 10px 20px var(--cacahuete);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+h2 {
+    margin-top: 20px;
+    font-family: 'VT323';
+}
+
+li:hover {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--couenne)
+}
+
+a:hover {
+    color: var(--couenne);
+}
+
+.btn-admin {
+    background-color: var(--terrine);
+    padding: 0.3rem 1rem;
+    color: var(--couenne);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+svg {
+    width: 100%;
+}
+
+.linkcontainer {
+    display: flex;
+    justify-content: end;
+}
+
+.link {
+    color: var(--terrine);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'VT323';
+    letter-spacing: 2px;
+}

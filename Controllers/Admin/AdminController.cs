@@ -7,22 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace LaCroute
+namespace LaCroute;
+
+[Authorize]
+[Route("admin")]
+public class AdminController : Controller
 {
-    public class AdminController : Controller
+    public IActionResult Index()
     {
-        private readonly LaCrouteContext _context;
-
-            public AdminController(LaCrouteContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IActionResult> Index() 
-        {
-            return View();
-        }
+        return View();
     }
-}
 
+    
+}

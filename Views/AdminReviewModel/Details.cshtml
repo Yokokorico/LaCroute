@@ -2,10 +2,15 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
     <div class="text-center">
+
+        <div class="linkcontainer">
+            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+        </div>
 
         <h1>Détail de l'avis</h1>
 

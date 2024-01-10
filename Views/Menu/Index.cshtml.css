@@ -49,6 +49,7 @@ img {
     padding: 0;
 }
 
+
 @media screen and (min-width: 480px) {
     .menu {
         padding: 2rem 6rem;

@@ -2,10 +2,15 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
 }
 
 <div class="container">
     <div class="text-center">
+
+        <div class="linkcontainer">
+            <a href="@Url.Action("Events", "Home")" class="btn link">Voir les évènements</a>
+        </div>
 
         <h1>Evènements</h1>
 
@@ -20,19 +25,7 @@
                         Intitulé
                     </th>
                     <th>
-                        Description
-                    </th>
-                    <th>
-                        Photo
-                    </th>
-                    <th>
                         Date
-                    </th>
-                    <th>
-                        Date de création
-                    </th>
-                    <th>
-                        Date de mise à jour
                     </th>
                     <th></th>
                 </tr>
@@ -41,27 +34,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td class="p-2">
                             @Html.DisplayFor(modelItem => item.title)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.thumbnail)
-                        </td>
-                        <td>
+                        <td class="p-2">
                             @Html.DisplayFor(modelItem => item.date)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.created_at)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.updated_at)
-                        </td>
-                        <td class="text-center">
-                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin mb-2">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin mb-2">Détail</a>
+                        <td class="p-2">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin">Détail</a>
                             <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>

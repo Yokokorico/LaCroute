@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LaCroute.Data;
 using LaCroute.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LaCroute
 {
+    [Authorize]
     public class AdminProductModelController : Controller
     {
         private readonly LaCrouteContext _context;
@@ -54,13 +56,10 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
         {
             if (ModelState.IsValid)
             {
-                productModel.Created_at = DateTime.Now;
-                productModel.Updated_at = DateTime.Now;
-
                 _context.Add(productModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -89,7 +88,7 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,Thumbnail,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
         {
             if (id != productModel.Id)
             {
@@ -100,14 +99,6 @@ namespace LaCroute
             {
                 try
                 {
-                    var existingProduct = await _context.Product.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
-
-                    if (existingProduct != null)
-                    {
-                        productModel.Created_at = existingProduct.Created_at;
-                    }
-
-                    productModel.Updated_at = DateTime.Now;
                     _context.Update(productModel);
                     await _context.SaveChangesAsync();
                 }

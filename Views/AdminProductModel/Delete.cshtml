@@ -1,0 +1,71 @@
+@model LaCroute.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_LayoutAdmin";
+}
+<div class="container">
+    <div class="text-center">
+
+        <div class="linkcontainer">
+            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+        </div>
+
+        <h1>Supprimer le produit</h1>
+
+        <h2>Etes-vous sur de vouloir supprimer cette relation ?</h2>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Thumbnail)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Thumbnail)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsAvailable)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Created_at)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Created_at)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Updated_at)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Updated_at)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Supprimer" class="btn btn-admin" />
+                <a asp-action="Index" class="btn btn-admin">Retour</a>
+            </form>
+        </div>
+    </div>
+</div>

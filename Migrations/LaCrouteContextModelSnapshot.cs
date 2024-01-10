@@ -43,6 +43,70 @@ namespace LaCroute.Migrations
                     b.ToTable("Admin");
                 });
 
+            modelBuilder.Entity("LaCroute.Models.AvailabiltyModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("is_available")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("serviceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("tableId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("serviceId");
+
+                    b.HasIndex("tableId");
+
+                    b.ToTable("Availabilties");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.Book", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("phoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("seats")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<TimeSpan>("time")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Books");
+                });
+
             modelBuilder.Entity("LaCroute.Models.EventModel", b =>
                 {
                     b.Property<int>("id")
@@ -52,7 +116,7 @@ namespace LaCroute.Migrations
                     b.Property<DateTime>("created_at")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("date")
+                    b.Property<DateOnly>("date")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("description")
@@ -131,6 +195,9 @@ namespace LaCroute.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
@@ -160,15 +227,20 @@ namespace LaCroute.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("created_at")
@@ -180,6 +252,49 @@ namespace LaCroute.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Review");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.ServiceModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Service");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.TableModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Updated_at")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("number")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("seat")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Table");
                 });
 
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
@@ -398,6 +513,25 @@ namespace LaCroute.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("LaCroute.Models.AvailabiltyModel", b =>
+                {
+                    b.HasOne("LaCroute.Models.ServiceModel", "service")
+                        .WithMany("availabilties")
+                        .HasForeignKey("serviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LaCroute.Models.TableModel", "table")
+                        .WithMany("availabilties")
+                        .HasForeignKey("tableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("service");
+
+                    b.Navigation("table");
+                });
+
             modelBuilder.Entity("LaCroute.Models.ProductLabelModel", b =>
                 {
                     b.HasOne("LaCroute.Models.LabelModel", "Label")
@@ -485,6 +619,16 @@ namespace LaCroute.Migrations
             modelBuilder.Entity("LaCroute.Models.ProductModel", b =>
                 {
                     b.Navigation("ProductLabel");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.ServiceModel", b =>
+                {
+                    b.Navigation("availabilties");
+                });
+
+            modelBuilder.Entity("LaCroute.Models.TableModel", b =>
+                {
+                    b.Navigation("availabilties");
                 });
 
             modelBuilder.Entity("LaCroute.Models.TypeModel", b =>
