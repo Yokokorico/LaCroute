@@ -7,6 +7,9 @@
 margin-inline: auto;
 }
 
+.concept-description {
+    margin-bottom: 5rem;
+}
 .container-left {
 position : relative;
 margin-right: 1rem;
@@ -34,6 +37,9 @@ p {
     text-shadow: 4px 4px 0px var(--terrine);
 }
 
+.bouton-reserver {
+    margin-bottom: 5rem;
+}
 
 @media screen and (max-width: 800px) {
     .concept-slogan {
