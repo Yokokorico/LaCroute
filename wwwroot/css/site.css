@@ -85,3 +85,15 @@ h2 {
   font-size: 14px;
 }
 
+
+.concept-image {
+  max-width: 39rem !important;
+  margin-inline: auto !important;
+}
+
+@media  screen and (max-width: 800px) {
+  .concept-image {
+    max-width: 100% !important;
+  }
+  
+}
