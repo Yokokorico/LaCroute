@@ -3,6 +3,7 @@ using System;
 using LaCroute.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaCroute.Migrations
 {
     [DbContext(typeof(LaCrouteContext))]
-    partial class LaCrouteContextModelSnapshot : ModelSnapshot
+    [Migration("20240109105734_UpdateReviewFields")]
+    partial class UpdateReviewFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -194,9 +197,6 @@ namespace LaCroute.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Price")
                         .HasColumnType("REAL");

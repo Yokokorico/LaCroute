@@ -1,55 +1,78 @@
 @model LaCroute.Models.ReviewModel
 
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Gère le survol des étoiles
+            $('#noteInput').val(0);
+            $('.star').hover(
+                function () {
+                    $(this).addClass('hover');
+                    $(this).prevAll('.star').addClass('hover');
+                },
+                function () {
+                    $(this).removeClass('hover');
+                    $(this).prevAll('.star').removeClass('hover');
+                }
+            );
+
+            // Gère le clic sur une étoile
+            $('.star').click(function () {
+                var value = $(this).data('value');
+                $('#noteInput').val(value);
+
+                // Mettez en surbrillance les étoiles sélectionnées et celles qui les précèdent
+                $('.star').removeClass('selected');
+
+                $(this).addClass('selected');
+                $(this).prevAll('.star').addClass('selected');
+            });
+        })
+    </script>
+}
+
 <div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-6 col-md-6 ">
-            <form asp-action="Review" method="post" class="border border-primary p-5">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="Name">Nom</label>
-                        <input type="text" id="Name" name="Name" id="Name" asp-for="Name" required/>
+    <div class="row d-flex justify-content-center pb-5">
+        <div class="col-6 col-md-6 bg-terrine border border-color rounded">
+            <form asp-action="Review" method="post" class="p-5 ">
+                <div class="row d-flex justify-content-center bg-">
+                    <h2 class="text-center">Donnez votre avis!</h2>
+                </div>
+                <div class="pt-5 pb-5">
+                    <div class="input-group mb-3 col-md-6">
+                        <span class="input-group-text" id="basic-addon1">Prénom</span>
+                        <input type="text" id="Name" name="Name" id="Name" asp-for="Name" />
                         <span asp-validation-for="Name" class="text-danger"></span>
-
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="Title">Titre</label>
-                        <input type="text" id="Title" name="Title" id="Title" asp-for="Title" required/>
+                    <div class="input-group mb-3 col-md-6">
+                        <span class="input-group-text" id="basic-addon1">Titre</span>
+                        <input type="text" id="Title" name="Title" id="Title" asp-for="Title" />
                         <span asp-validation-for="Title" class="text-danger"></span>
-
                     </div>
                     <div class="form-group col-md-6"></div>
-                    <div class="row">
-                        <div class="rate">
-                            <input type="radio" class="d-none" id="star5" asp-for="Rating" name="Rating" value="5" required/>
-
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" class="d-none" id="star4" asp-for="Rating" name="Rating" value="4" required/>
-
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" class="d-none" id="star3" asp-for="Rating" name="Rating" value="3" required/>
-
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" class="d-none" id="star2" asp-for="Rating" name="Rating" value="2" required/>
-
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" class="d-none" id="star1" asp-for="Rating" name="Rating" value="1" required/>
-                            <label for="star1" title="text">1 star</label>
-
+                    <div class="row pb-2">
+                        <div class="input-group mb-3 col-md-6">
+                            <span class="input-group-text" id="basic-addon1">Note</span>
                             <span asp-validation-for="Rating" class="text-danger"></span>
-
+                            <div id="rating-container" class="bg-white border border-secondary2 p-rating" >
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <span class="star" data-value="@i">&#9733;</span>
+                                }
+                            </div>
                         </div>
+
+                        <input type="hidden" asp-for="Rating" id="noteInput" />
                     </div>
                     <div class="form-row">
-                        <textarea id="Description" class="w-100" name="Description" asp-for="Description" placeholder="Ecrivez votre message ici" required></textarea>
+                        <textarea id="Description" class="w-100 h-description" name="Description" asp-for="Description"
+                            placeholder="Ecrivez votre message ici" style="height: 120px;"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
-
                     </div>
-                    <button class="btn btn-primary" type="submit">Soumettre</button>
-                </form>
-            </div>
-
+                    <button class="btn btn-pistache mt-5" type="submit">Soumettre</button>
+            </form>
         </div>
-
-
     </div>
+</div>
 
