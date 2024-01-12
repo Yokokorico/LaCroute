@@ -24,7 +24,11 @@ namespace LaCroute
         // GET: AdminProductModel
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.Product
+                .Include(p => p.ProductLabel)
+                .ThenInclude(productlabel => productlabel.Label)
+                .Include(p => p.Type)
+                .ToListAsync());
         }
 
         // GET: AdminProductModel/Details/5
@@ -48,6 +52,8 @@ namespace LaCroute
         // GET: AdminProductModel/Create
         public IActionResult Create()
         {
+            ViewData["TypeId"] = new SelectList(_context.Type, "Id", "Title");
+            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Title");
             return View();
         }
 
@@ -56,14 +62,15 @@ namespace LaCroute
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,TypeId,Created_at,Updated_at")] ProductModel productModel)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(productModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("http://localhost:5148/AdminProductLabelModel/Create");
             }
+
             return View(productModel);
         }
 
@@ -80,6 +87,8 @@ namespace LaCroute
             {
                 return NotFound();
             }
+            ViewData["TypeId"] = new SelectList(_context.Type, "Id", "Title");
+
             return View(productModel);
         }
 

@@ -50,7 +50,7 @@ namespace LaCroute.Controllers
             {
                 _context.Add(book);
                 await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Votre réservation à bien été enregister en cas de soucis nous vous appellerons";
+                TempData["SuccessMessage"] = "Votre réservation à bien été enregistrer en cas de soucis nous vous appellerons";
                 return RedirectToAction(nameof(Booking));
             }
             return View(book);

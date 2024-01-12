@@ -9,14 +9,10 @@
     <div class="text-center">
 
         <div class="linkcontainer">
-            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+            <a class="btn link" asp-area="" asp-controller="Home" asp-action="index">Retour au site</a>
         </div>
 
         <h1>Avis</h1>
-
-        <p>
-            <a asp-action="Create" class="btn btn-admin">Ajouter un avis</a>
-        </p>
 
         <table class="table">
             <thead>
@@ -47,7 +43,6 @@
                             @Html.DisplayFor(modelItem => item.Rating)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
                             <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
                         </td>
