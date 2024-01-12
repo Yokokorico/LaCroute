@@ -9,7 +9,7 @@
     <div class="text-center">
 
         <div class="linkcontainer">
-            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+            <a class="btn link" asp-area="" asp-controller="Menu" asp-action="index">Voir le menu</a>
         </div>
 
         <h1>Détail de la relation Produit/Label</h1>
@@ -24,10 +24,22 @@
                     @Html.DisplayFor(model => model.Product.Id)
                 </dd>
                 <dt class="col-sm-2">
+                    Produit
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Product.Title)
+                </dd>
+                <dt class="col-sm-2">
                     Id du label
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Label.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    Label
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Label.Title)
                 </dd>
             </dl>
         </div>
