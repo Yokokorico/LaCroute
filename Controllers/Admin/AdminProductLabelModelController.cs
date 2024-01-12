@@ -52,8 +52,15 @@ namespace LaCroute
         // [Route("create")]
         public IActionResult Create()
         {
-            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Id");
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id");
+            var products = _context.Product.OrderByDescending(p => p.Id).ToList();
+            var lastProduct = products.FirstOrDefault();
+            ViewData["ProductId"] = new SelectList(products, "Id", "Title");
+            if (lastProduct != null)
+            {
+                ViewData["ProductId"] = new SelectList(products, "Id", "Title", lastProduct.Id);
+            }
+
+            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Title");
             return View();
         }
 
@@ -64,15 +71,9 @@ namespace LaCroute
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ProductId,LabelId")] ProductLabelModel productLabelModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(productLabelModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Id", productLabelModel.LabelId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", productLabelModel.ProductId);
-            return View(productLabelModel);
+            _context.Add(productLabelModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: AdminProductLabelModel/Edit/5
@@ -89,8 +90,8 @@ namespace LaCroute
             {
                 return NotFound();
             }
-            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Id", productLabelModel.LabelId);
-            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Id", productLabelModel.ProductId);
+            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Title");
+            ViewData["ProductId"] = new SelectList(_context.Product, "Id", "Title");
             return View(productLabelModel);
         }
 

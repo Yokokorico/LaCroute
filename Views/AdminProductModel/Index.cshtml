@@ -9,7 +9,7 @@
     <div class="text-center">
 
         <div class="linkcontainer">
-            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+            <a class="btn link" asp-area="" asp-controller="Menu" asp-action="index">Voir le menu</a>
         </div>
 
         <h1>Menu</h1>
@@ -21,29 +21,53 @@
             <thead>
                 <tr>
                     <th>
+                        Type
+                    </th>
+                    <th>
                         Intitulé
                     </th>
                     <th>
                         Au menu
                     </th>
-                    <th></th>
+                    @* <th>
+                    Actions Menu
+                    </th> *@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var produit in Model)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Title)
+                            @if (produit.Type != null)
+                            {
+                                <span>@produit.Type.Title </span>
+                            }
+                            else
+                            {
+                                <span>Aucun</span>
+                            }
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsAvailable)
+                            @Html.DisplayFor(modelItem => produit.Title)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détails</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
+                            @Html.DisplayFor(modelItem => produit.IsAvailable)
                         </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@produit.Id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@produit.Id" class="btn btn-admin">Détails</a>
+                            <a asp-action="Delete" asp-route-id="@produit.Id" class="btn btn-admin">Supprimer</a>
+                        </td>
+                        @* <td>
+                            <ul>
+                                @if (produit.ProductLabel != null)
+                                    @foreach (var productLabel in produit.ProductLabel)
+                                    {
+                                        <li>@productLabel.Label.Title</li>
+                                    }
+                            </ul>
+                        </td> *@
                     </tr>
                 }
             </tbody>
