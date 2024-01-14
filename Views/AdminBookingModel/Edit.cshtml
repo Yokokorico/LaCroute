@@ -1,0 +1,65 @@
+@model LaCroute.Models.BookingModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container">
+    <div class="text-center">
+
+        <div class="linkcontainer">
+            <a class="btn link" asp-area="" asp-controller="Home" asp-action="index">Retour au site</a>
+        </div>
+
+        <h1>Editer la réservations</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id" />
+                    <div class="form-group">
+                        <label asp-for="date" class="control-label">Date</label>
+                        <input asp-for="date" class="form-control" />
+                        <span asp-validation-for="date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="time" class="control-label">Heure</label>
+                        <input asp-for="time" class="form-control" />
+                        <span asp-validation-for="time" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label">Prénom Nom</label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="phoneNumber" class="control-label">Numéro de téléphone</label>
+                        <input asp-for="phoneNumber" class="form-control" />
+                        <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="seats" class="control-label">Nombre de couverts</label>
+                        <input asp-for="seats" class="form-control" />
+                        <span asp-validation-for="seats" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Enregistrer" class="btn btn-admin m-2" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index"  class="btn btn-admin m-2">Retour</a>
+        </div>
+    </div>
+</div>
+
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }

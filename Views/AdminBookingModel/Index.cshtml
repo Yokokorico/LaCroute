@@ -1,4 +1,4 @@
-@model IEnumerable<LaCroute.Models.ReviewModel>
+@model IEnumerable<LaCroute.Models.BookingModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,19 +12,19 @@
             <a class="btn link" asp-area="" asp-controller="Home" asp-action="index">Retour au site</a>
         </div>
 
-        <h1>Avis</h1>
+        <h1>Réservations</h1>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>
+                        Date
+                    </th>
+                    <th>
+                        Heure
+                    </th>
+                    <th>
                         Nom
-                    </th>
-                    <th>
-                        Titre
-                    </th>
-                    <th>
-                        Evaluation
                     </th>
                     <th></th>
                 </tr>
@@ -34,17 +34,18 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Title)
+                            @Html.DisplayFor(modelItem => item.time)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Rating)
+                            @Html.DisplayFor(modelItem => item.name)
                         </td>
-                        <td>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin">Détail</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin">Supprimer</a>
+                        <td class="p-2">
+                            <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin">Editer</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin">Détails</a>
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>
                 }

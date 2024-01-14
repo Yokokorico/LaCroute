@@ -26,7 +26,7 @@ namespace LaCroute.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Booking([Bind("date,time,name,phoneNumber,seats")] Book book)
+        public async Task<IActionResult> Booking([Bind("date,time,name,phoneNumber,seats")] BookingModel book)
         {
             Console.WriteLine("IM HERE -------------- "+book.date);
             DateOnly dateFormat = DateOnly.Parse(book.date.ToString("MM-dd-yyyy"));

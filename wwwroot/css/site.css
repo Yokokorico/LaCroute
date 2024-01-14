@@ -85,3 +85,28 @@ h2 {
   font-size: 14px;
 }
 
+
+.concept-image {
+  max-width: 39rem !important;
+  margin-inline: auto !important;
+}
+
+.booking-button {
+  background-color: var(--cacahuete);
+  padding: 0.3rem 1rem;
+  color: var(--couenne);
+  font-size: x-large;
+  font-family: VT323;
+  
+}
+
+.booking-button a {
+  margin-inline: auto;
+}
+
+@media  screen and (max-width: 800px) {
+  .concept-image {
+    max-width: 100% !important;
+  }
+  
+}

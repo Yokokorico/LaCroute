@@ -9,7 +9,7 @@
     <div class="text-center">
 
         <div class="linkcontainer">
-            <a href="@Url.Action("Menu", "Home")" class="btn link">Voir le menu</a>
+            <a class="btn link" asp-area="" asp-controller="Menu" asp-action="index">Voir le menu</a>
         </div>
 
         <h1>Editer le produit</h1>
@@ -27,12 +27,12 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Description" class="control-label">Description</label>
-                        <input asp-for="Description" class="form-control" />
+                        <textarea asp-for="Description" class="form-control"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Price" class="control-label">Prix</label>
-                        <input asp-for="Price" class="form-control" />
+                        <input asp-for="Price" class="form-control" type="number" />
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -46,14 +46,9 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Created_at" class="control-label">Date de création</label>
-                        <input asp-for="Created_at" class="form-control" />
-                        <span asp-validation-for="Created_at" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Updated_at" class="control-label">Date de mise à jour</label>
-                        <input asp-for="Updated_at" class="form-control" />
-                        <span asp-validation-for="Updated_at" class="text-danger"></span>
+                        <label asp-for="TypeId" class="control-label">Type</label>
+                        <select asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeId"></select>
+                        <span asp-validation-for="TypeId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Enregistrer" class="btn btn-admin m-2" />

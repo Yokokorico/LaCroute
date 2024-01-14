@@ -14,6 +14,18 @@ p{
     width: 60%;
 }
 
+.titre-section {
+    font-size: 5rem;
+    color: var(--couenne);
+    text-shadow: 4px 4px 0px var(--terrine);
+    font-family: Pirata One;
+    line-height: 5rem;
+position: relative;
+margin-left: 5rem;
+    top: 20rem;
+}
+
+
 @media screen and (max-width: 500px) { 
     p{
         width: 100%;

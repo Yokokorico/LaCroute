@@ -9,29 +9,26 @@ using LaCroute.Data;
 using LaCroute.Models;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace LaCroute
 {
     [Authorize]
-    public class AdminProductModelController : Controller
+    public class AdminBookingModelController : Controller
     {
         private readonly LaCrouteContext _context;
 
-        public AdminProductModelController(LaCrouteContext context)
+        public AdminBookingModelController(LaCrouteContext context)
         {
             _context = context;
         }
 
-        // GET: AdminProductModel
+        // GET: AdminBookingModel
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product
-                .Include(p => p.ProductLabel)
-                .ThenInclude(productlabel => productlabel.Label)
-                .Include(p => p.Type)
-                .ToListAsync());
+            return View(await _context.Books.ToListAsync());
         }
 
-        // GET: AdminProductModel/Details/5
+        // GET: AdminBookingModel/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,42 +36,42 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var productModel = await _context.Product
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (productModel == null)
+            var bookingModel = await _context.Books
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (bookingModel == null)
             {
                 return NotFound();
             }
 
-            return View(productModel);
+            return View(bookingModel);
         }
 
-        // GET: AdminProductModel/Create
+        // GET: AdminBookingModel/Create
         public IActionResult Create()
         {
-            ViewData["TypeId"] = new SelectList(_context.Type, "Id", "Title");
-            ViewData["LabelId"] = new SelectList(_context.Label, "Id", "Title");
             return View();
         }
 
-        // POST: AdminProductModel/Create
+        // POST: AdminBookingModel/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,TypeId,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Create([Bind("id,date,time,name,phoneNumber,seats,created_at,updated_at")] BookingModel bookingModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(productModel);
-                await _context.SaveChangesAsync();
-                return Redirect("http://localhost:5148/AdminProductLabelModel/Create");
-            }
+                bookingModel.created_at = DateTime.Now;
+                bookingModel.updated_at = DateTime.Now;
 
-            return View(productModel);
+                _context.Add(bookingModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(bookingModel);
         }
 
-        // GET: AdminProductModel/Edit/5
+        // GET: AdminBookingModel/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,24 +79,22 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var productModel = await _context.Product.FindAsync(id);
-            if (productModel == null)
+            var bookingModel = await _context.Books.FindAsync(id);
+            if (bookingModel == null)
             {
                 return NotFound();
             }
-            ViewData["TypeId"] = new SelectList(_context.Type, "Id", "Title");
-
-            return View(productModel);
+            return View(bookingModel);
         }
 
-        // POST: AdminProductModel/Edit/5
+        // POST: AdminBookingModel/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,Thumbnail,IsAvailable,Created_at,Updated_at")] ProductModel productModel)
+        public async Task<IActionResult> Edit(int id, [Bind("id,date,time,name,phoneNumber,seats,created_at,updated_at")] BookingModel bookingModel)
         {
-            if (id != productModel.Id)
+            if (id != bookingModel.id)
             {
                 return NotFound();
             }
@@ -108,12 +103,21 @@ namespace LaCroute
             {
                 try
                 {
-                    _context.Update(productModel);
+                    var existingBooking = await _context.Books.AsNoTracking().FirstOrDefaultAsync(e => e.id == id);
+
+                    if (existingBooking != null)
+                    {
+                        bookingModel.created_at = existingBooking.created_at;
+                    }
+
+                    bookingModel.updated_at = DateTime.Now;
+
+                    _context.Update(bookingModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductModelExists(productModel.Id))
+                    if (!BookingModelExists(bookingModel.id))
                     {
                         return NotFound();
                     }
@@ -124,10 +128,10 @@ namespace LaCroute
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(productModel);
+            return View(bookingModel);
         }
 
-        // GET: AdminProductModel/Delete/5
+        // GET: AdminBookingModel/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,34 +139,34 @@ namespace LaCroute
                 return NotFound();
             }
 
-            var productModel = await _context.Product
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (productModel == null)
+            var bookingModel = await _context.Books
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (bookingModel == null)
             {
                 return NotFound();
             }
 
-            return View(productModel);
+            return View(bookingModel);
         }
 
-        // POST: AdminProductModel/Delete/5
+        // POST: AdminBookingModel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var productModel = await _context.Product.FindAsync(id);
-            if (productModel != null)
+            var bookingModel = await _context.Books.FindAsync(id);
+            if (bookingModel != null)
             {
-                _context.Product.Remove(productModel);
+                _context.Books.Remove(bookingModel);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductModelExists(int id)
+        private bool BookingModelExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Books.Any(e => e.id == id);
         }
     }
 }
