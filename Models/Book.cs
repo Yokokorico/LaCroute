@@ -4,6 +4,7 @@ namespace LaCroute.Models;
 public class Book{
     [Key]
     public int id {get; set;}
+    [Required(ErrorMessage = "Veuillez sélectionner une date.")]
     public DateOnly date {get; set;}
     [Required(ErrorMessage = "Veuillez sélectionner une heure.")]
     [DataType(DataType.Time)]
