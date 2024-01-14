@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace LaCroute.Models;
-public class Book{
+public class BookingModel{
     [Key]
     public int id {get; set;}
     public DateOnly date {get; set;}

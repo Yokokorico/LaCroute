@@ -1,4 +1,4 @@
-@model IEnumerable<LaCroute.Models.EventModel>
+@model IEnumerable<LaCroute.Models.BookingModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,20 +12,19 @@
             <a class="btn link" asp-area="" asp-controller="Home" asp-action="index">Retour au site</a>
         </div>
 
-        <h1>Evènements</h1>
-
-        <p>
-            <a asp-action="Create" class="btn btn-admin">Ajouter un évènement</a>
-        </p>
+        <h1>Réservations</h1>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Intitulé
+                        Date
                     </th>
                     <th>
-                        Date
+                        Heure
+                    </th>
+                    <th>
+                        Nom
                     </th>
                     <th></th>
                 </tr>
@@ -34,15 +33,18 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="p-2">
-                            @Html.DisplayFor(modelItem => item.title)
-                        </td>
-                        <td class="p-2">
+                        <td>
                             @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
                         </td>
                         <td class="p-2">
                             <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-admin">Editer</a>
-                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin">Détail</a>
+                            <a asp-action="Details" asp-route-id="@item.id" class="btn btn-admin">Détails</a>
                             <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-admin">Supprimer</a>
                         </td>
                     </tr>

@@ -26,7 +26,7 @@ namespace LaCroute.Data
         public DbSet<TableModel> Table { get; set; } = default!;
         public DbSet<ServiceModel> Service { get; set; } = default!;
         public DbSet<AvailabiltyModel> Availabilties { get; set; } = default!;
-        public DbSet<Book> Books { get; set; } = default!;
+        public DbSet<BookingModel> Books { get; set; } = default!;
         public DbSet<AdminModel> Admin { get; set; } = default!;
     }
 }
