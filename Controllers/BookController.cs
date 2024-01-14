@@ -28,16 +28,14 @@ namespace LaCroute.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Booking([Bind("date,time,name,phoneNumber,seats")] BookingModel book)
         {
-            Console.WriteLine("IM HERE -------------- "+book.date);
-            DateOnly dateFormat = DateOnly.Parse(book.date.ToString("MM-dd-yyyy"));
-            
+            Console.WriteLine("IM HERE START-------------- "+book.date.ToString("yyyy-MM-dd"));
+            DateOnly dateFormat = DateOnly.Parse(book.date.ToString("yyyy-MM-dd"));
             var existingEvents = await _context.Event
             .Where(e => e.date == dateFormat)
             .ToListAsync();
 
             bool isEventExist = existingEvents.Any();
             Console.WriteLine("IM HERE -------------- "+isEventExist);
-
 
             if (isEventExist)
             {

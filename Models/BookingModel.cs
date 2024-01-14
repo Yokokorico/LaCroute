@@ -9,6 +9,7 @@ public class BookingModel{
     [Required(ErrorMessage = "Veuillez sélectionner une heure.")]
     [DataType(DataType.Time)]
     public TimeSpan time {get; set;}
+    [Required(ErrorMessage = "Votre nom est requis pour réserver.")]
     public string name {get; set;}
     [Phone(ErrorMessage ="Merci de renseigner un numéro de téléphone valide")]
     [Required(ErrorMessage = "Le numéro de téléphone est requis pour réserver.")]
