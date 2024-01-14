@@ -4,10 +4,12 @@ namespace LaCroute.Models;
 public class BookingModel{
     [Key]
     public int id {get; set;}
+    [Required(ErrorMessage = "Veuillez sélectionner une date.")]
     public DateOnly date {get; set;}
     [Required(ErrorMessage = "Veuillez sélectionner une heure.")]
     [DataType(DataType.Time)]
     public TimeSpan time {get; set;}
+    [Required(ErrorMessage = "Votre nom est requis pour réserver.")]
     public string name {get; set;}
     [Phone(ErrorMessage ="Merci de renseigner un numéro de téléphone valide")]
     [Required(ErrorMessage = "Le numéro de téléphone est requis pour réserver.")]

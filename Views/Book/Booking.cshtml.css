@@ -34,11 +34,7 @@
     background-color: var(--pistache)!important;
     color: var(--terrine)!important;
 }
-input[type="radio"]:checked + label{
-    background-color: var(--pistache);
-    color: var(--terrine);
-    box-shadow: none;
-}
+
 
 h2{
     padding: 0px !important;
@@ -46,4 +42,8 @@ h2{
 
 .padding-form{
     padding: 2px !important;
+}
+
+.form-border{
+    border-radius: 35px;
 }
