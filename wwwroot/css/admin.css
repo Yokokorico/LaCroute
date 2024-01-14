@@ -95,3 +95,17 @@ svg {
     font-family: 'VT323';
     letter-spacing: 2px;
 }
+
+
+.homeadmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: 2rem;
+}
+
+.homeadminimg {
+    width: 50%;
+    border-radius: 0px 7rem;
+}
