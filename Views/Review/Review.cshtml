@@ -78,9 +78,10 @@
                             <div id="rating-container" class="bg-white border border-secondary2 p-rating">
                                 @for (int i = 1; i <= 5; i++)
                                 {
-                                    <span class="star" data-value="@i">&#9733;</span>
+                                    <span asp-for="Rating" class="star" data-value="@i" name="Rating">&#9733;</span>
                                 }
                             </div>
+                            <input class="d-none" id="noteInput" name="Rating" asp-for="Rating"/>
                         </div>
                         
                     </div>
