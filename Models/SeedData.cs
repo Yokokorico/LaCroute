@@ -43,24 +43,24 @@ namespace LaCroute.Models
                 context.Event.AddRange(
                     new EventModel
                 {
-                    title = "When Harry Met Sally",
-                    description = "WALLAH",
-                    thumbnail = "https://www.corpo-events.fr/wp-content/uploads/2013/09/organisation-seminaire-incentive-840x334.jpg",
-                    date = DateOnly.Parse("1989-2-12"),
+                    title = "Fête du cochon",
+                    description = "Fête du cochon",
+                    thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSTCIILGRWmr8llZ7z7UODcXfZZKY-sX9I-A&usqp=CAU",
+                    date = DateOnly.Parse("2024-1-27"),
                 },
                 new EventModel
                 {
-                    title = "LA FETE DU PATE",
+                    title = "Fête du pâté",
                     description = "Officia et laborum ex culpa. Eiusmod eu ad ullamco ad. Dolore veniam reprehenderit aliqua cillum adipisicing. Cillum nisi deserunt anim reprehenderit nisi ea incididunt ullamco commodo aliqua. Ad nisi mollit eu sunt ad consequat commodo amet pariatur. Ipsum officia et non officia sint cillum ad Lorem est nulla est enim. <br> Veniam labore irure nisi irure. Eiusmod aliquip id eu nisi. Laboris incididunt eiusmod velit consectetur excepteur anim aliqua ut. Esse ex anim sunt exercitation dolore sunt pariatur laboris magna. Ut ipsum dolore eiusmod sint commodo minim ex laboris.",
                     thumbnail = "https://www.corpo-events.fr/wp-content/uploads/2013/09/organisation-seminaire-incentive-840x334.jpg",
-                    date = DateOnly.Parse("1989-2-12"),
+                    date = DateOnly.Parse("2024-2-12"),
                 },
                 new EventModel
                 {
-                    title = "PATE AMBULANT",
+                    title = "Concert - Les Saucisses Sonores",
                     description = "Officia et laborum ex culpa. Eiusmod eu ad ullamco ad. Dolore veniam reprehenderit aliqua cillum adipisicing. Cillum nisi deserunt anim reprehenderit nisi ea incididunt ullamco commodo aliqua. Ad nisi mollit eu sunt ad consequat commodo amet pariatur. Ipsum officia et non officia sint cillum ad Lorem est nulla est enim. <br> Veniam labore irure nisi irure. Eiusmod aliquip id eu nisi. Laboris incididunt eiusmod velit consectetur excepteur anim aliqua ut. Esse ex anim sunt exercitation dolore sunt pariatur laboris magna. Ut ipsum dolore eiusmod sint commodo minim ex laboris.",
-                    thumbnail = "https://www.corpo-events.fr/wp-content/uploads/2013/09/organisation-seminaire-incentive-840x334.jpg",
-                    date = DateOnly.Parse("2022-2-12"),
+                    thumbnail = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_tavMj_JJytJn3CJ1bRzD-DyRiEYnT0ecnw&usqp=CAU",
+                    date = DateOnly.Parse("2024-2-01"),
                 },
                 new EventModel
                 {
