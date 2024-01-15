@@ -46,4 +46,5 @@ h2{
 
 .form-border{
     border-radius: 35px;
+    border: 8px solid var(--cacahuete);
 }
